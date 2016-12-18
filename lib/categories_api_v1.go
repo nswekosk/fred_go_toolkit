@@ -42,3 +42,58 @@ func (f *FredClient) GetCategory(CategoryID string) (*Category, error) {
 	return cat, nil
 
 }
+
+func (f *FredClient) GetCategoryChildren(params ...string) (*[]Category, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	return nil, nil
+
+}
+
+func (f *FredClient) GetRelatedCategory(params ...string) (*[]Category, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	return nil, nil
+
+}
+
+func (f *FredClient) GetCategorySeries(params ...interface{}) (*Seriess, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	return nil, nil
+
+}
+
+func (f *FredClient) GetCategoryTags(params ...interface{}) (*Tags, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	return nil, nil
+
+}
+
+func (f *FredClient) GetCategoryRelatedTags(params ...interface{}) (*Tags, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	return nil, nil
+
+}
