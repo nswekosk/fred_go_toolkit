@@ -3,6 +3,7 @@ package lib
 import (
 	"errors"
 	"net/http"
+	"strings"
 )
 
 type FredClient struct {
@@ -22,7 +23,7 @@ const (
 
 func CreateClient(ApiKey string) (*FredClient, error) {
 
-	if ApiKey == "" {
+	if sameStr(ApiKey, "") {
 		return nil, errors.New("Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account.")
 	}
 
@@ -35,7 +36,7 @@ func CreateClient(ApiKey string) (*FredClient, error) {
 }
 
 func (f *FredClient) validateAPIKEY() error {
-	if f.aPI_KEY == "" {
+	if sameStr(f.aPI_KEY, "") {
 		return errors.New("Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account.")
 	}
 	return nil
@@ -44,6 +45,10 @@ func (f *FredClient) validateAPIKEY() error {
 func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (*http.Response, error) {
 
 	url := formatUrl(f.requestUrl, params, param_type)
+
+	if sameStr(url, f.requestUrl) {
+		return nil, errors.New("No parameters were added. Please update you parameter input.")
+	}
 
 	resp, err := http.Get(url)
 
@@ -55,16 +60,19 @@ func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (
 }
 
 func formatUrl(url string, params map[string]interface{}, param_type string) string {
-
-	for key, val := range params {
+	for parameter, paramVal := range params {
 		for _, param := range paramsLookup[param_type] {
-			if key == param {
-				url += ("/?" + key + "=" + val.(string))
+			if sameStr(parameter, param) {
+				url += ("/?" + parameter + "=" + paramVal.(string))
 			}
 		}
-
 	}
-
 	return url
+}
 
+func sameStr(str1 string, str2 string) bool {
+	if strings.Compare(str1, str2) == 0 {
+		return true
+	}
+	return false
 }
