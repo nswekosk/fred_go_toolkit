@@ -1,4 +1,4 @@
-package lib_test
+package test
 
 import (
 	"testing"
@@ -6,71 +6,73 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
-func TestGetTags(t *testing.T) {
+func TestGetSources(t *testing.T) {
 
 	params := make(map[string]interface{})
 
 	Convey("", t, func() {
-		tags, err := xmlFredClient.GetTags(params)
+		srcs, err := xmlFredClient.GetSources(params)
 		So(err, ShouldBeNil)
 
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(srcs, ShouldNotBeNil)
 		})
 	})
 
 	Convey("", t, func() {
-		tags, err := jsonFredClient.GetTags(params)
+		srcs, err := jsonFredClient.GetSources(params)
 
 		So(err, ShouldBeNil)
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(srcs, ShouldNotBeNil)
 		})
 	})
+
 }
 
-func TestGetRelatedTags(t *testing.T) {
+func TestGetSource(t *testing.T) {
 
 	params := make(map[string]interface{})
 
 	Convey("", t, func() {
-		tags, err := xmlFredClient.GetRelatedTags(params)
+		src, err := xmlFredClient.GetSource(params)
 		So(err, ShouldBeNil)
 
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(src, ShouldNotBeNil)
 		})
 	})
 
 	Convey("", t, func() {
-		tags, err := jsonFredClient.GetRelatedTags(params)
+		src, err := jsonFredClient.GetSource(params)
 
 		So(err, ShouldBeNil)
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(src, ShouldNotBeNil)
 		})
 	})
+
 }
 
-func TestGetTagSeries(t *testing.T) {
+func TestGetSourceReleases(t *testing.T) {
 
 	params := make(map[string]interface{})
 
 	Convey("", t, func() {
-		tags, err := xmlFredClient.GetTagSeries(params)
+		rls, err := xmlFredClient.GetSourceReleases(params)
 		So(err, ShouldBeNil)
 
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(rls, ShouldNotBeNil)
 		})
 	})
 
 	Convey("", t, func() {
-		tags, err := jsonFredClient.GetTagSeries(params)
+		rls, err := jsonFredClient.GetSourceReleases(params)
 
 		So(err, ShouldBeNil)
 		Convey("", t, func() {
-			So(tags, ShouldNotBeNil)
+			So(rls, ShouldNotBeNil)
 		})
 	})
 
