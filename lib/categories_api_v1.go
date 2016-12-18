@@ -34,7 +34,7 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, er
 	err = json.NewDecoder(resp.Body).Decode(cat)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return cat, nil
@@ -59,7 +59,7 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Catego
 	err = json.NewDecoder(resp.Body).Decode(cats)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return cats, nil
@@ -84,7 +84,7 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categor
 	err = json.NewDecoder(resp.Body).Decode(cats)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return cats, nil
@@ -109,7 +109,7 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess,
 	err = json.NewDecoder(resp.Body).Decode(sers)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return sers, nil
@@ -134,7 +134,7 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, erro
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -160,7 +160,7 @@ func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tag
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil

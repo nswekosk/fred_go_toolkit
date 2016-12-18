@@ -44,7 +44,7 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -69,7 +69,7 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -94,7 +94,7 @@ func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, erro
 	err = json.NewDecoder(resp.Body).Decode(srs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srs, nil

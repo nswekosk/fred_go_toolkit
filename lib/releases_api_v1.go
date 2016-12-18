@@ -60,7 +60,7 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, erro
 	err = json.NewDecoder(resp.Body).Decode(rls)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rls, nil
@@ -85,7 +85,7 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDa
 	err = json.NewDecoder(resp.Body).Decode(rlDts)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rlDts, nil
@@ -110,7 +110,7 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error
 	err = json.NewDecoder(resp.Body).Decode(rls)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rls, nil
@@ -135,7 +135,7 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDat
 	err = json.NewDecoder(resp.Body).Decode(rlDts)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rlDts, nil
@@ -160,7 +160,7 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, 
 	err = json.NewDecoder(resp.Body).Decode(srs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srs, nil
@@ -185,7 +185,7 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources,
 	err = json.NewDecoder(resp.Body).Decode(srcs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srcs, nil
@@ -210,7 +210,7 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -235,7 +235,7 @@ func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -261,7 +261,7 @@ func (f *FredClient) GetReleaseTables(params map[string]interface{}) (*Tags, err
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil

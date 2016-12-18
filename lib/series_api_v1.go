@@ -81,7 +81,7 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) 
 	err = json.NewDecoder(resp.Body).Decode(srs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srs, nil
@@ -106,7 +106,7 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Catego
 	err = json.NewDecoder(resp.Body).Decode(ctgs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return ctgs, nil
@@ -131,7 +131,7 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Obse
 	err = json.NewDecoder(resp.Body).Decode(obs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return obs, nil
@@ -156,7 +156,7 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases,
 	err = json.NewDecoder(resp.Body).Decode(rls)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rls, nil
@@ -181,7 +181,7 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, e
 	err = json.NewDecoder(resp.Body).Decode(srs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srs, nil
@@ -206,7 +206,7 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, 
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -231,7 +231,7 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -256,7 +256,7 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error)
 	err = json.NewDecoder(resp.Body).Decode(tags)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return tags, nil
@@ -281,7 +281,7 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, 
 	err = json.NewDecoder(resp.Body).Decode(srs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srs, nil
@@ -306,7 +306,7 @@ func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*Vint
 	err = json.NewDecoder(resp.Body).Decode(vds)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return vds, nil

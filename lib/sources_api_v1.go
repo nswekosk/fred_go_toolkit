@@ -42,7 +42,7 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error)
 	err = json.NewDecoder(resp.Body).Decode(srcs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srcs, nil
@@ -67,7 +67,7 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) 
 	err = json.NewDecoder(resp.Body).Decode(srcs)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return srcs, nil
@@ -92,7 +92,7 @@ func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*Releases
 	err = json.NewDecoder(resp.Body).Decode(rls)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return rls, nil

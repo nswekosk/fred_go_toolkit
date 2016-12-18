@@ -17,20 +17,16 @@ type FredClient struct {
 	Tags       Tags
 }
 
-const (
-	requestUrl = "https://api.stlouisfed.org/fred"
-)
-
 func CreateClient(ApiKey string) (*FredClient, error) {
 
 	if sameStr(ApiKey, "") {
-		return nil, errors.New("Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account.")
+		return nil, errors.New(errorNoApiKey)
 	}
 
 	return &FredClient{
 		aPI_KEY:    ApiKey,
 		fileType:   "json",
-		requestUrl: requestUrl + "?api_key=" + ApiKey,
+		requestUrl: apiUrl + "?api_key=" + ApiKey,
 	}, nil
 }
 
@@ -46,7 +42,7 @@ func (f *FredClient) UpdateAPIKEY(ApiKey string) {
 
 func (f *FredClient) validateAPIKEY() error {
 	if sameStr(f.aPI_KEY, "") {
-		return errors.New("Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account.")
+		return errors.New(errorNoApiKey)
 	}
 	return nil
 }
@@ -56,13 +52,13 @@ func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (
 	url := formatUrl(f.requestUrl, params, param_type)
 
 	if sameStr(url, f.requestUrl) {
-		return nil, errors.New("No parameters were added. Please update you parameter input.")
+		return nil, errors.New(errorNoParameters)
 	}
 
 	resp, err := http.Get(url)
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, errors.New(errorLibraryFail)
 	}
 
 	return resp, nil
