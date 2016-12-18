@@ -6,13 +6,13 @@ import (
 )
 
 type Categories struct {
-	CategoryCol []Category `categories`
+	CategoryCol []Category `json:"categories"`
 }
 
 type Category struct {
-	id        int    `id`
-	name      string `name`
-	parent_id string `parent_id`
+	id        int    `json:"id"`
+	name      string `json:"name"`
+	parent_id string `json:"parent_id"`
 }
 
 /********************************

@@ -17,11 +17,6 @@ type FredClient struct {
 	aPI_KEY    string
 	fileType   string
 	requestUrl string
-	Categories Category
-	Releases   Releases
-	Series     Series
-	Sources    Seriess
-	Tags       Tags
 }
 
 /********************************

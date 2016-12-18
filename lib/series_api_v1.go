@@ -6,61 +6,61 @@ import (
 )
 
 type Seriess struct {
-	Start     string   `realtime_start`
-	End       string   `realtime_end`
-	SeriesCol []Series `seriess`
+	Start     string   `json:"realtime_start"`
+	End       string   `json:"realtime_end"`
+	SeriesCol []Series `json:"seriess"`
 }
 
 type Series struct {
-	ID                     string `id`
-	Start                  string `realtime_start`
-	End                    string `realtime_end`
-	Title                  string `title`
-	ObsStart               string `observation_start`
-	ObsEnd                 string `observation_end`
-	Frequency              string `annual`
-	FrequencyShort         string `frequency_short`
-	Units                  string `units`
-	UnitsShort             string `units_short`
-	SeasonalAdjustment     string `seasonal_adjustment`
-	SeasonalAdustmentShort string `seasonal_adjustment_short`
-	LastUpdated            string `last_updated`
-	Popularity             int    `popularity`
-	Notes                  string `notes`
+	ID                     string `json:"id"`
+	Start                  string `json:"realtime_start"`
+	End                    string `json:"realtime_end"`
+	Title                  string `json:"title"`
+	ObsStart               string `json:"observation_start"`
+	ObsEnd                 string `json:"observation_end"`
+	Frequency              string `json:"annual"`
+	FrequencyShort         string `json:"frequency_short"`
+	Units                  string `json:"units"`
+	UnitsShort             string `json:"units_short"`
+	SeasonalAdjustment     string `json:"seasonal_adjustment"`
+	SeasonalAdustmentShort string `json:"seasonal_adjustment_short"`
+	LastUpdated            string `json:"last_updated"`
+	Popularity             int    `json:"popularity"`
+	Notes                  string `json:"notes"`
 }
 
 type Observations struct {
-	Start        string        `realtime_start`
-	End          string        `realtime_end`
-	ObsStart     string        `observation_start`
-	ObsEnd       string        `observation_end`
-	Units        string        `units`
-	OutputType   int           `output_type`
-	FileType     string        `file_type`
-	OrderBy      string        `order_by`
-	SortOrder    string        `sort_order`
-	Count        int           `count`
-	Offset       int           `offset`
-	Limit        int           `limit`
-	Observations []Observation `observations`
+	Start        string        `json:"realtime_start"`
+	End          string        `json:"realtime_end"`
+	ObsStart     string        `json:"observation_start"`
+	ObsEnd       string        `json:"observation_end"`
+	Units        string        `json:"units"`
+	OutputType   int           `json:"output_type"`
+	FileType     string        `json:"file_type"`
+	OrderBy      string        `json:"order_by"`
+	SortOrder    string        `json:"sort_order"`
+	Count        int           `json:"count"`
+	Offset       int           `json:"offset"`
+	Limit        int           `json:"limit"`
+	Observations []Observation `json:"observations"`
 }
 
 type Observation struct {
-	Start string `realtime_start`
-	End   string `realtime_end`
-	Date  string `date`
-	Value string `value`
+	Start string `json:"realtime_start"`
+	End   string `json:"realtime_end"`
+	Date  string `json:"date"`
+	Value string `json:"value"`
 }
 
 type VintageDates struct {
-	Start        string   `realtime_start`
-	End          string   `realtime_end`
-	OrderBy      string   `order_by`
-	SortOrder    string   `sort_order`
-	Count        int      `count`
-	Offset       int      `offset`
-	Limit        int      `limit`
-	VintageDates []string `vintage_dates`
+	Start        string   `json:"realtime_start"`
+	End          string   `json:"realtime_end"`
+	OrderBy      string   `json:"order_by"`
+	SortOrder    string   `json:"sort_order"`
+	Count        int      `json:"count"`
+	Offset       int      `json:"offset"`
+	Limit        int      `json:"limit"`
+	VintageDates []string `json:"vintage_dates"`
 }
 
 /********************************

@@ -6,24 +6,24 @@ import (
 )
 
 type Tags struct {
-	Start     string   `realtime_start`
-	End       string   `realtime_end`
-	OrderBy   string   `order_by`
-	SortOrder string   `sort_order`
-	Count     int      `count`
-	Offset    int      `offset`
-	Limit     int      `limit`
-	Tags      []Tag    `tag`
-	Sources   []Source `sources`
+	Start     string   `json:"realtime_start"`
+	End       string   `json:"realtime_end"`
+	OrderBy   string   `json:"order_by"`
+	SortOrder string   `json:"sort_order"`
+	Count     int      `json:"count"`
+	Offset    int      `json:"offset"`
+	Limit     int      `json:"limit"`
+	Tags      []Tag    `json:"tag"`
+	Sources   []Source `json:"sources"`
 }
 
 type Tag struct {
-	Name        string `name`
-	GroupId     string `group_id`
-	Notes       string `notes`
-	Created     string `created`
-	Popularity  int    `popularity`
-	SeriesCount int    `series_count`
+	Name        string `json:"name"`
+	GroupID     string `json:"group_id"`
+	Notes       string `json:"notes"`
+	Created     string `json:"created"`
+	Popularity  int    `json:"popularity"`
+	SeriesCount int    `json:"series_count"`
 }
 
 /********************************

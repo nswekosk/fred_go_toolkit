@@ -6,22 +6,22 @@ import (
 )
 
 type Sources struct {
-	Start      string   `realtime_start`
-	End        string   `realtime_end`
-	OrderBy    string   `order_by`
-	SortOrder  string   `sort_order`
-	Count      int      `count`
-	Offset     int      `offset`
-	Limit      int      `limit`
-	SourcesCol []Source `sources`
+	Start      string   `json:"realtime_start"`
+	End        string   `json:"realtime_end"`
+	OrderBy    string   `json:"order_by"`
+	SortOrder  string   `json:"sort_order"`
+	Count      int      `json:"count"`
+	Offset     int      `json:"offset"`
+	Limit      int      `json:"limit"`
+	SourcesCol []Source `json:"sources"`
 }
 
 type Source struct {
-	ID    int    `id`
-	Start string `realtime_start`
-	End   string `realtime_end`
-	Name  string `name`
-	Link  string `link`
+	ID    int    `json:"id"`
+	Start string `json:"realtime_start"`
+	End   string `json:"realtime_end"`
+	Name  string `json:"name"`
+	Link  string `json:"link"`
 }
 
 /********************************

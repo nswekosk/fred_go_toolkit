@@ -6,40 +6,40 @@ import (
 )
 
 type Releases struct {
-	Start      string    `realtime_start`
-	End        string    `realtime_end`
-	OrderBy    string    `order_by`
-	SortOrder  string    `sort_order`
-	Count      int       `count`
-	Offset     int       `offset`
-	Limit      int       `limit`
-	ReleaseCol []Release `releases`
+	Start      string    `json:"realtime_start"`
+	End        string    `json:"realtime_end"`
+	OrderBy    string    `json:"order_by"`
+	SortOrder  string    `json:"sort_order"`
+	Count      int       `json:"count"`
+	Offset     int       `json:"offset"`
+	Limit      int       `json:"limit"`
+	ReleaseCol []Release `json:"releases"`
 }
 
 type Release struct {
-	ID           int    `id`
-	Start        string `realtime_start`
-	End          string `realtime_end`
-	Name         string `name`
-	PressRelease bool   `press_release`
-	Link         string `link`
+	ID           int    `json:"id"`
+	Start        string `json:"realtime_start"`
+	End          string `json:"realtime_end"`
+	Name         string `json:"name"`
+	PressRelease bool   `json:"press_release"`
+	Link         string `json:"link"`
 }
 
 type ReleaseDates struct {
-	Start           string        `realtime_start`
-	End             string        `realtime_end`
-	OrderBy         string        `order_by`
-	SortOrder       string        `sort_order`
-	Count           int           `count`
-	Offset          int           `offset`
-	Limit           int           `limit`
-	ReleaseDatesCol []ReleaseDate `release_dates`
+	Start           string        `json:"realtime_start"`
+	End             string        `json:"realtime_end"`
+	OrderBy         string        `json:"order_by"`
+	SortOrder       string        `json:"sort_order"`
+	Count           int           `json:"count"`
+	Offset          int           `json:"offset"`
+	Limit           int           `json:"limit"`
+	ReleaseDatesCol []ReleaseDate `json:"release_dates"`
 }
 
 type ReleaseDate struct {
-	ID   int    `id`
-	Name string `name`
-	Date string `date`
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Date string `json:"date"`
 }
 
 /********************************
