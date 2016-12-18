@@ -63,6 +63,11 @@ type VintageDates struct {
 	VintageDates []string `vintage_dates`
 }
 
+/********************************
+ ** GetSeries
+ **
+ ** Get an economic data series.
+ ********************************/
 func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -88,6 +93,12 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) 
 
 }
 
+/********************************
+ ** GetSeriesCategories
+ **
+ ** Get the categories for an
+ ** economic data series.
+ ********************************/
 func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Categories, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -113,6 +124,13 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Catego
 
 }
 
+/********************************
+ ** GetReleaseObservations
+ **
+ ** Get the observations or data
+ ** values for an economic data
+ ** series.
+ ********************************/
 func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Observations, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -138,6 +156,12 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Obse
 
 }
 
+/********************************
+ ** GetSeriesRelease
+ **
+ ** Get the release for an economic
+ ** data series.
+ ********************************/
 func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -163,6 +187,12 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases,
 
 }
 
+/********************************
+ ** GetSeriesSearch
+ **
+ ** Get economic data series that
+ ** match keywords.
+ ********************************/
 func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -188,6 +218,11 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, e
 
 }
 
+/********************************
+ ** GetSeriesSearchTags
+ **
+ ** Get the tags for a series search.
+ ********************************/
 func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -213,6 +248,12 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, 
 
 }
 
+/********************************
+ ** GetSeriesSearchRelatedTags
+ **
+ ** Get teh related tags for a
+ ** series search.
+ ********************************/
 func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -238,6 +279,12 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
 
 }
 
+/********************************
+ ** GetSeriesTags
+ **
+ ** Get the tags for an economic
+ ** data series.
+ ********************************/
 func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -263,6 +310,14 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error)
 
 }
 
+/********************************
+ ** GetSeriesUpdates
+ **
+ ** Get the economic data series
+ ** sorted by when observations
+ ** were updated on the FRED
+ ** server.
+ ********************************/
 func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -288,6 +343,14 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, 
 
 }
 
+/********************************
+ ** GetSeriesVintageDates
+ **
+ ** Get the dates in history when
+ ** series' data values were
+ ** revised or new data values
+ ** were released.
+ ********************************/
 func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*VintageDates, error) {
 	if err := f.validateAPIKEY(); err != nil {
 

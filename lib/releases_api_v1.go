@@ -42,6 +42,12 @@ type ReleaseDate struct {
 	Date string `date`
 }
 
+/********************************
+ ** GetReleases
+ **
+ ** Get all releases of economic
+ ** data.
+ ********************************/
 func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -67,6 +73,12 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, erro
 
 }
 
+/********************************
+ ** GetReleasesDates
+ **
+ ** Get release dates for all
+ ** releases of economic data.
+ ********************************/
 func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDates, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -92,6 +104,11 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDa
 
 }
 
+/********************************
+ ** GetRelease
+ **
+ ** Get a release of economic data.
+ ********************************/
 func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -117,6 +134,12 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error
 
 }
 
+/********************************
+ ** GetReleaseDates
+ **
+ ** Get release dates for a release
+ ** of economic data.
+ ********************************/
 func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDates, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -142,6 +165,12 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDat
 
 }
 
+/********************************
+ ** GetReleaseSeries
+ **
+ ** Get the series on a release of
+ ** economic data.
+ ********************************/
 func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -167,6 +196,12 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, 
 
 }
 
+/********************************
+ ** GetReleaseSources
+ **
+ ** Get the sources for a Release
+ ** of economic data.
+ ********************************/
 func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -192,6 +227,11 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources,
 
 }
 
+/********************************
+ ** GetReleaseTags
+ **
+ ** Get the tags for a release.
+ ********************************/
 func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -217,6 +257,12 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error
 
 }
 
+/********************************
+ ** GetReleaseRelatedTags
+ **
+ ** Get the related tags for a
+ ** release.
+ ********************************/
 func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -242,6 +288,12 @@ func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags
 
 }
 
+/********************************
+ ** GetReleaseTables
+ **
+ ** Get the related tags for a
+ ** category.
+ ********************************/
 /*
 func (f *FredClient) GetReleaseTables(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {

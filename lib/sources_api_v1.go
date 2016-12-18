@@ -24,6 +24,12 @@ type Source struct {
 	Link  string `link`
 }
 
+/********************************
+ ** GetSources
+ **
+ ** Get all sources of economic
+ ** data.
+ ********************************/
 func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -49,6 +55,11 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error)
 
 }
 
+/********************************
+ ** GetSource
+ **
+ ** Get a source of economic data.
+ ********************************/
 func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -74,6 +85,11 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) 
 
 }
 
+/********************************
+ ** GetSourceReleases
+ **
+ ** Get the releases for a source.
+ ********************************/
 func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*Releases, error) {
 	if err := f.validateAPIKEY(); err != nil {
 

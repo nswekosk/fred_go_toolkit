@@ -6,6 +6,13 @@ import (
 	"strings"
 )
 
+const (
+	apiUrl            = "https://api.stlouisfed.org/fred"
+	errorNoApiKey     = "Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account."
+	errorNoParameters = "No parameters were added. Please update you parameter input."
+	errorLibraryFail  = "There was an error in processing the query. Please contact the client administrator."
+)
+
 type FredClient struct {
 	aPI_KEY    string
 	fileType   string
@@ -17,6 +24,12 @@ type FredClient struct {
 	Tags       Tags
 }
 
+/********************************
+ ** CreateClient
+ **
+ ** Creates an instance of a
+ ** FRED client.
+ ********************************/
 func CreateClient(ApiKey string) (*FredClient, error) {
 
 	if sameStr(ApiKey, "") {
@@ -30,6 +43,12 @@ func CreateClient(ApiKey string) (*FredClient, error) {
 	}, nil
 }
 
+/********************************
+ ** UpdateAPIKEY
+ **
+ ** Updates the API KEY for the
+ ** client.
+ ********************************/
 func (f *FredClient) UpdateAPIKEY(ApiKey string) {
 
 	f.aPI_KEY = ApiKey
@@ -40,6 +59,11 @@ func (f *FredClient) UpdateAPIKEY(ApiKey string) {
 
 }
 
+/********************************
+ ** validateAPIKEY
+ **
+ ** Validates that an APIKEY exists.
+ ********************************/
 func (f *FredClient) validateAPIKEY() error {
 	if sameStr(f.aPI_KEY, "") {
 		return errors.New(errorNoApiKey)
@@ -47,6 +71,12 @@ func (f *FredClient) validateAPIKEY() error {
 	return nil
 }
 
+/********************************
+ ** callAPI
+ **
+ ** Creates the url and makes a
+ ** GET request to the API.
+ ********************************/
 func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (*http.Response, error) {
 
 	url := formatUrl(f.requestUrl, params, param_type)
@@ -64,6 +94,12 @@ func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (
 	return resp, nil
 }
 
+/********************************
+ ** formatUrl
+ **
+ ** Formats the url per the API
+ ** specifications.
+ ********************************/
 func formatUrl(url string, params map[string]interface{}, param_type string) string {
 
 	url += paramsLookup[param_type]["extension"].(string)

@@ -15,6 +15,11 @@ type Category struct {
 	parent_id string `parent_id`
 }
 
+/********************************
+ ** GetCategory
+ **
+ ** Get a category.
+ ********************************/
 func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, error) {
 
 	if err := f.validateAPIKEY(); err != nil {
@@ -41,6 +46,12 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, er
 
 }
 
+/********************************
+ ** GetCategoryChildren
+ **
+ ** Get the child categories for
+ ** a specified parent category
+ ********************************/
 func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Categories, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -66,6 +77,12 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Catego
 
 }
 
+/********************************
+ ** GetRelatedCategory
+ **
+ ** Get the related categories
+ ** for a category.
+ ********************************/
 func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categories, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -91,6 +108,11 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categor
 
 }
 
+/********************************
+ ** GetCategorySeries
+ **
+ ** Get the series in a category.
+ ********************************/
 func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -116,6 +138,11 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess,
 
 }
 
+/********************************
+ ** GetCategoryTags
+ **
+ ** Get the tags for a category.
+ ********************************/
 func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -141,6 +168,12 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, erro
 
 }
 
+/********************************
+ ** GetCategoryRelatedTags
+ **
+ ** Get the related tags for a
+ ** category.
+ ********************************/
 func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tags, error) {
 
 	if err := f.validateAPIKEY(); err != nil {

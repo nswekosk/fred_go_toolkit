@@ -26,6 +26,12 @@ type Tag struct {
 	SeriesCount int    `series_count`
 }
 
+/********************************
+ ** GetTags
+ **
+ ** Get all tags, search for tags,
+ ** or get tags by name.
+ ********************************/
 func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -51,6 +57,12 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
 
 }
 
+/********************************
+ ** GetRelatedTags
+ **
+ ** Get the related tags for one
+ ** or more tags.
+ ********************************/
 func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -76,6 +88,11 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error
 
 }
 
+/********************************
+ ** GetTagSeries
+ **
+ ** Get the series matching tags.
+ ********************************/
 func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
