@@ -30,8 +30,17 @@ func CreateClient(ApiKey string) (*FredClient, error) {
 	return &FredClient{
 		aPI_KEY:    ApiKey,
 		fileType:   "json",
-		requestUrl: requestUrl + "api_key",
+		requestUrl: requestUrl + "?api_key=" + ApiKey,
 	}, nil
+}
+
+func (f *FredClient) UpdateAPIKEY(ApiKey string) {
+
+	f.aPI_KEY = ApiKey
+
+	url := strings.Split(f.requestUrl, "?")
+
+	f.requestUrl = url[0] + "?api_key=" + ApiKey
 
 }
 
