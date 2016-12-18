@@ -10,8 +10,8 @@ import (
 
 var (
 	apiKey         = ""
-	xmlFredClient  FredClient
-	jsonFredClient FredClient
+	xmlFredClient  = &FredClient{}
+	jsonFredClient = &FredClient{}
 )
 
 func main() {
@@ -19,13 +19,13 @@ func main() {
 
 	var err error
 
-	xmlFredClient, err := CreateClient(apiKey, FileTypeXML)
+	xmlFredClient, err = CreateClient(apiKey, FileTypeXML)
 
 	if err != nil {
 		panic(err)
 	}
 
-	jsonFredClient, err := CreateClient(apiKey, FileTypeJSON)
+	jsonFredClient, err = CreateClient(apiKey, FileTypeJSON)
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,6 @@ func TestUpdateAPIKEY(t *testing.T) {
 
 	Convey("", t, func() {
 		xmlFredClient.UpdateAPIKEY(key)
-
 	})
 
 	Convey("", t, func() {
