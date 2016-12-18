@@ -1,10 +1,5 @@
 package lib
 
-import (
-	"encoding/json"
-	"errors"
-)
-
 type Seriess struct {
 	Start     string   `json:"realtime_start"`
 	End       string   `json:"realtime_end"`
@@ -69,27 +64,14 @@ type VintageDates struct {
  ** Get an economic data series.
  ********************************/
 func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srs := &Seriess{}
-
-	resp, err := f.callAPI(params, "SERIES")
+	srs, err := f.operate(params, "SERIES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srs, nil
+	return (srs.(*Seriess)), nil
 
 }
 
@@ -100,27 +82,14 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) 
  ** economic data series.
  ********************************/
 func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Categories, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	ctgs := &Categories{}
-
-	resp, err := f.callAPI(params, "SERIES_CATEGORIES")
+	srsCts, err := f.operate(params, "SERIES_CATEGORIES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(ctgs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return ctgs, nil
+	return (srsCts.(*Categories)), nil
 
 }
 
@@ -132,27 +101,14 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Catego
  ** series.
  ********************************/
 func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Observations, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	obs := &Observations{}
-
-	resp, err := f.callAPI(params, "SERIES_OBSERVATIONS")
+	srsObs, err := f.operate(params, "SERIES_OBSERVATIONS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(obs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return obs, nil
+	return (srsObs.(*Observations)), nil
 
 }
 
@@ -163,27 +119,14 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Obse
  ** data series.
  ********************************/
 func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	rls := &Releases{}
-
-	resp, err := f.callAPI(params, "SERIES_RELEASE")
+	srsRls, err := f.operate(params, "SERIES_RELEASE")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(rls)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return rls, nil
+	return (srsRls.(*Releases)), nil
 
 }
 
@@ -194,27 +137,14 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases,
  ** match keywords.
  ********************************/
 func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srs := &Seriess{}
-
-	resp, err := f.callAPI(params, "SERIES_SEARCH")
+	srs, err := f.operate(params, "SERIES_SEARCH")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srs, nil
+	return (srs.(*Seriess)), nil
 
 }
 
@@ -224,27 +154,14 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, e
  ** Get the tags for a series search.
  ********************************/
 func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "SERIES_SEARCH_TAGS")
+	tags, err := f.operate(params, "SERIES_SEARCH_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -255,27 +172,14 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, 
  ** series search.
  ********************************/
 func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "SERIES_SEARCH_RELATED_TAGS")
+	tags, err := f.operate(params, "SERIES_SEARCH_RELATED_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -286,27 +190,14 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
  ** data series.
  ********************************/
 func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "SERIES_TAGS")
+	tags, err := f.operate(params, "SERIES_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -319,27 +210,14 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error)
  ** server.
  ********************************/
 func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srs := &Seriess{}
-
-	resp, err := f.callAPI(params, "SERIES_UPDATES")
+	srs, err := f.operate(params, "SERIES_UPDATES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srs, nil
+	return (srs.(*Seriess)), nil
 
 }
 
@@ -352,26 +230,13 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, 
  ** were released.
  ********************************/
 func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*VintageDates, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	vds := &VintageDates{}
-
-	resp, err := f.callAPI(params, "SERIES_VINTAGEDATES")
+	vds, err := f.operate(params, "SERIES_VINTAGEDATES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(vds)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return vds, nil
+	return (vds.(*VintageDates)), nil
 
 }

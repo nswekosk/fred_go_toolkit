@@ -1,10 +1,5 @@
 package lib
 
-import (
-	"encoding/json"
-	"errors"
-)
-
 type Categories struct {
 	CategoryCol []Category `json:"categories"`
 }
@@ -22,27 +17,13 @@ type Category struct {
  ********************************/
 func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, error) {
 
-	if err := f.validateAPIKEY(); err != nil {
-
-		return nil, err
-
-	}
-
-	cat := &Categories{}
-
-	resp, err := f.callAPI(params, "CATEGORY")
+	cats, err := f.operate(params, "CATEGORY")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(cat)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return cat, nil
+	return (cats.(*Categories)), nil
 
 }
 
@@ -53,27 +34,14 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, er
  ** a specified parent category
  ********************************/
 func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Categories, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	cats := &Categories{}
-
-	resp, err := f.callAPI(params, "CATEGORY_CHILDREN")
+	cats, err := f.operate(params, "CATEGORY_CHILDREN")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(cats)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return cats, nil
+	return (cats.(*Categories)), nil
 
 }
 
@@ -84,27 +52,14 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Catego
  ** for a category.
  ********************************/
 func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categories, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	cats := &Categories{}
-
-	resp, err := f.callAPI(params, "CATEGORY_RELATED")
+	cats, err := f.operate(params, "CATEGORY_RELATED")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(cats)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return cats, nil
+	return (cats.(*Categories)), nil
 
 }
 
@@ -114,27 +69,14 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categor
  ** Get the series in a category.
  ********************************/
 func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	sers := &Seriess{}
-
-	resp, err := f.callAPI(params, "CATEGORY_SERIES")
+	sers, err := f.operate(params, "CATEGORY_SERIES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(sers)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return sers, nil
+	return (sers.(*Seriess)), nil
 
 }
 
@@ -144,27 +86,14 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess,
  ** Get the tags for a category.
  ********************************/
 func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "CATEGORY_TAGS")
+	tags, err := f.operate(params, "CATEGORY_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -176,26 +105,12 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, erro
  ********************************/
 func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tags, error) {
 
-	if err := f.validateAPIKEY(); err != nil {
-
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "CATEGORY_RELATED_TAGS")
+	tags, err := f.operate(params, "CATEGORY_RELATED_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }

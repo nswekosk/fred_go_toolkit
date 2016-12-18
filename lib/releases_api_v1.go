@@ -1,10 +1,5 @@
 package lib
 
-import (
-	"encoding/json"
-	"errors"
-)
-
 type Releases struct {
 	Start      string    `json:"realtime_start"`
 	End        string    `json:"realtime_end"`
@@ -49,27 +44,14 @@ type ReleaseDate struct {
  ** data.
  ********************************/
 func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	rls := &Releases{}
-
-	resp, err := f.callAPI(params, "RELEASES")
+	rls, err := f.operate(params, "RELEASES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(rls)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return rls, nil
+	return (rls.(*Releases)), nil
 
 }
 
@@ -80,27 +62,14 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, erro
  ** releases of economic data.
  ********************************/
 func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDates, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	rlDts := &ReleaseDates{}
-
-	resp, err := f.callAPI(params, "RELEASES_DATES")
+	rlDts, err := f.operate(params, "RELEASES_DATES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(rlDts)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return rlDts, nil
+	return (rlDts.(*ReleaseDates)), nil
 
 }
 
@@ -110,27 +79,14 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDa
  ** Get a release of economic data.
  ********************************/
 func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	rls := &Releases{}
-
-	resp, err := f.callAPI(params, "RELEASE")
+	rls, err := f.operate(params, "RELEASE")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(rls)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return rls, nil
+	return (rls.(*Releases)), nil
 
 }
 
@@ -141,27 +97,14 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error
  ** of economic data.
  ********************************/
 func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDates, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	rlDts := &ReleaseDates{}
-
-	resp, err := f.callAPI(params, "RELEASE_DATES")
+	rlDts, err := f.operate(params, "RELEASE_DATES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(rlDts)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return rlDts, nil
+	return (rlDts.(*ReleaseDates)), nil
 
 }
 
@@ -172,27 +115,14 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDat
  ** economic data.
  ********************************/
 func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srs := &Seriess{}
-
-	resp, err := f.callAPI(params, "RELEASE_SERIES")
+	rlSrs, err := f.operate(params, "RELEASE_SERIES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srs, nil
+	return (rlSrs.(*Seriess)), nil
 
 }
 
@@ -203,27 +133,14 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, 
  ** of economic data.
  ********************************/
 func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srcs := &Sources{}
-
-	resp, err := f.callAPI(params, "RELEASE_SOURCES")
+	rlSrcs, err := f.operate(params, "RELEASE_SOURCES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srcs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srcs, nil
+	return (rlSrcs.(*Sources)), nil
 
 }
 
@@ -233,27 +150,14 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources,
  ** Get the tags for a release.
  ********************************/
 func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "RELEASE_SOURCES")
+	rlTags, err := f.operate(params, "RELEASE_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (rlTags.(*Tags)), nil
 
 }
 
@@ -264,27 +168,14 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error
  ** release.
  ********************************/
 func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "RELEASE_RELATED_TAGS")
+	rlTags, err := f.operate(params, "RELEASE_RELATED_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (rlTags.(*Tags)), nil
 
 }
 

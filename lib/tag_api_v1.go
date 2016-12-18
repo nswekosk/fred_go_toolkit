@@ -1,10 +1,5 @@
 package lib
 
-import (
-	"encoding/json"
-	"errors"
-)
-
 type Tags struct {
 	Start     string   `json:"realtime_start"`
 	End       string   `json:"realtime_end"`
@@ -33,27 +28,14 @@ type Tag struct {
  ** or get tags by name.
  ********************************/
 func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "TAGS")
+	tags, err := f.operate(params, "TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -64,27 +46,14 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
  ** or more tags.
  ********************************/
 func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	tags := &Tags{}
-
-	resp, err := f.callAPI(params, "RELATED_TAGS")
+	tags, err := f.operate(params, "RELATED_TAGS")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return tags, nil
+	return (tags.(*Tags)), nil
 
 }
 
@@ -94,26 +63,13 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error
  ** Get the series matching tags.
  ********************************/
 func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, error) {
-	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
-
-	}
-
-	srs := &Seriess{}
-
-	resp, err := f.callAPI(params, "RELATED_TAGS")
+	srs, err := f.operate(params, "TAGS_SERIES")
 
 	if err != nil {
 		return nil, err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(srs)
-
-	if err != nil {
-		return nil, errors.New(errorLibraryFail)
-	}
-
-	return srs, nil
+	return (srs.(*Seriess)), nil
 
 }
