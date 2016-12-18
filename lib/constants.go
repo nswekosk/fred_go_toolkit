@@ -46,6 +46,7 @@ const (
 	releaseSources     = "RELEASE_SOURCES"
 	releaseTags        = "RELEASE_TAGS"
 	releaseRelatedTags = "RELEASE_RELATED_TAGS"
+	releaseTables      = "RELEASE_TABLES"
 
 	series                  = "SERIES"
 	seriesCategories        = "SERIES_CATEGORIES"
