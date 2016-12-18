@@ -5,13 +5,17 @@ import (
 	"errors"
 )
 
+type Categories struct {
+	CategoryCol []Category `categories`
+}
+
 type Category struct {
 	id        int    `id`
 	name      string `name`
 	parent_id string `parent_id`
 }
 
-func (f *FredClient) GetCategory(params map[string]interface{}) (*Category, error) {
+func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, error) {
 
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -19,7 +23,7 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Category, erro
 
 	}
 
-	cat := &Category{}
+	cat := &Categories{}
 
 	resp, err := f.callAPI(params, "CATEGORY")
 
@@ -37,14 +41,14 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Category, erro
 
 }
 
-func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*[]Category, error) {
+func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Categories, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	cats := &[]Category{}
+	cats := &Categories{}
 
 	resp, err := f.callAPI(params, "CATEGORY_CHILDREN")
 
@@ -62,14 +66,14 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*[]Cate
 
 }
 
-func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*[]Category, error) {
+func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categories, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	cats := &[]Category{}
+	cats := &Categories{}
 
 	resp, err := f.callAPI(params, "CATEGORY_RELATED")
 

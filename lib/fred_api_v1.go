@@ -69,8 +69,11 @@ func (f *FredClient) callAPI(params map[string]interface{}, param_type string) (
 }
 
 func formatUrl(url string, params map[string]interface{}, param_type string) string {
+
+	url += paramsLookup[param_type]["extension"].(string)
+
 	for parameter, paramVal := range params {
-		for _, param := range paramsLookup[param_type] {
+		for _, param := range paramsLookup[param_type]["params"].([]string) {
 			if sameStr(parameter, param) {
 				url += ("/?" + parameter + "=" + paramVal.(string))
 			}
