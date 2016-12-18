@@ -16,11 +16,7 @@ var (
 
 func main() {
 
-	if os.Getenv("FRED_API_KEY") != "" {
-		apiKey = os.Getenv("FRED_API_KEY")
-	} else if os.Args[0] != "" {
-		apiKey = os.Args[0]
-	}
+	getAPIKey()
 
 	var err error
 
@@ -48,4 +44,12 @@ func TestUpdateAPIKEY(t *testing.T) {
 		jsonFredClient.UpdateAPIKEY(key)
 	})
 
+}
+
+func getAPIKey() {
+	if os.Getenv("FRED_API_KEY") != "" {
+		apiKey = os.Getenv("FRED_API_KEY")
+	} else if os.Args[0] != "" {
+		apiKey = os.Args[0]
+	}
 }
