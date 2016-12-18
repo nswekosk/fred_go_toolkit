@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 )
@@ -49,6 +50,35 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) {
 
 	f.requestURL = url[0] + "?aPIKEY=" + APIKey
 
+}
+
+/********************************
+ ** validateMethodArguments
+ **
+ ** Validates input to method.
+ ********************************/
+func (f *FredClient) validateMethodArguments(params map[string]interface{}) error {
+	if err := f.validateAPIKEY(); err != nil {
+		return err
+	}
+	if err := f.validateParams(params); err != nil {
+		return err
+	}
+	return nil
+}
+
+/********************************
+ ** validateParams
+ **
+ ** Validates method parameters.
+ ********************************/
+func (f *FredClient) validateParams(params map[string]interface{}) error {
+
+	if len(params) == 0 {
+		return errors.New(errorNoParams)
+	}
+
+	return nil
 }
 
 /********************************
@@ -128,15 +158,15 @@ func (f *FredClient) decodeObj(resp *http.Response, obj FredInterface) (FredInte
  ** parameter type.
  ********************************/
 func (f *FredClient) operate(params map[string]interface{}, paramType string) (FredInterface, error) {
-	if err := f.validateAPIKEY(); err != nil {
-
+	if err := f.validateMethodArguments(params); err != nil {
+		fmt.Println("[operate] validateMethodArguments Error %v", err.Error())
 		return nil, err
-
 	}
 
 	resp, err := f.callAPI(params, paramType)
 
 	if err != nil {
+		fmt.Println("[operate] callAPI Error %v", err.Error())
 		return nil, err
 	}
 
@@ -145,6 +175,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (F
 	obj, err = f.decodeObj(resp, obj)
 
 	if err != nil {
+		fmt.Println("[operate] decodeObj Error %v", err.Error())
 		return nil, err
 	}
 
@@ -163,14 +194,15 @@ func formatUrl(url string, params map[string]interface{}, paramType string) stri
 	firstParam := true
 
 	for paramKey, paramVal := range params {
-		paramOp := "&"
-		for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
-			if sameStr(paramKey, param) {
-				if firstParam {
-					paramOp = "?"
-
+		if !sameStr(paramKey, "") || !sameStr(paramVal.(string), "") {
+			paramOp := "&"
+			for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
+				if sameStr(paramKey, param) {
+					if firstParam {
+						paramOp = "?"
+					}
+					url += (paramOp + paramKey + "=" + paramVal.(string))
 				}
-				url += (paramOp + paramKey + "=" + paramVal.(string))
 			}
 		}
 	}

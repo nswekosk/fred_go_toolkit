@@ -14,9 +14,9 @@ var (
 	jsonFredClient = &FredClient{}
 )
 
-func main() {
+func TestMain(m *testing.M) {
 
-	getAPIKey()
+	apiKey = os.Getenv("FRED_API_KEY")
 
 	var err error
 
@@ -30,6 +30,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	ret := m.Run()
+	os.Exit(ret)
 }
 
 func TestUpdateAPIKEY(t *testing.T) {
@@ -44,12 +47,4 @@ func TestUpdateAPIKEY(t *testing.T) {
 		jsonFredClient.UpdateAPIKEY(key)
 	})
 
-}
-
-func getAPIKey() {
-	if os.Getenv("FRED_API_KEY") != "" {
-		apiKey = os.Getenv("FRED_API_KEY")
-	} else if os.Args[0] != "" {
-		apiKey = os.Args[0]
-	}
 }
