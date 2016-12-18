@@ -15,7 +15,12 @@ var (
 )
 
 func main() {
-	apiKey = os.Getenv("FRED_API_KEY")
+
+	if os.Getenv("FRED_API_KEY") != "" {
+		apiKey = os.Getenv("FRED_API_KEY")
+	} else if os.Args[0] != "" {
+		apiKey = os.Args[0]
+	}
 
 	var err error
 
