@@ -1,7 +1,10 @@
 package lib
 
 var paramsLookup = map[string]map[string]interface{}{
-	// CATEGORY PARAMATERS
+
+	/////////////////////////
+	// CATEGORY PARAMATERS //
+	/////////////////////////
 
 	category: {
 		paramLookupExt:    "category",
@@ -29,7 +32,10 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupParams: []string{"category_id", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order", "tag_names", "exclude_tag_names", "tag_group_id", "search_text"},
 	},
 
-	// RELEASE PARAMATERS
+	////////////////////////
+	// RELEASE PARAMATERS //
+	////////////////////////
+
 	releases: {
 		paramLookupExt:    "/releases",
 		paramLookupParams: []string{"realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"},
@@ -67,7 +73,10 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupParams: []string{"release_id", "element_id", "include_observation_values", "observation_date"},
 	},
 
-	// SERIES PARAMATERS
+	///////////////////////
+	// SERIES PARAMATERS //
+	///////////////////////
+
 	series: {
 		paramLookupExt:    "/series",
 		paramLookupParams: []string{"series_id", "realtime_start", "realtime_end"},
@@ -109,7 +118,10 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupParams: []string{"series_id", "realtime_start", "realtime_end", "limit", "offset", "sort_order"},
 	},
 
-	// SOURCES PARAMATERS
+	////////////////////////
+	// SOURCES PARAMATERS //
+	////////////////////////
+
 	sources: {
 		paramLookupExt:    "/sources",
 		paramLookupParams: []string{"realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"},
@@ -123,7 +135,10 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupParams: []string{"source_id", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order"},
 	},
 
-	// TAGS PARAMATERS
+	/////////////////////
+	// TAGS PARAMATERS //
+	/////////////////////
+
 	tags: {
 		paramLookupExt:    "/tags",
 		paramLookupParams: []string{"realtime_start", "realtime_end", "tag_names", "tag_group_id", "search_text", "limit", "offset", "order_by", "sort_order"},
