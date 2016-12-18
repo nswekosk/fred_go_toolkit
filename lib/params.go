@@ -18,7 +18,6 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupExt:    "/category/related",
 		paramLookupParams: []string{"category_id", "realtime_start", "realtime_end"},
 	},
-
 	categorySeries: {
 		paramLookupExt:    "/category/series",
 		paramLookupParams: []string{"category_id", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order", "filter_variable", "filter_value", "tag_names", "exclude_tag_names"},
