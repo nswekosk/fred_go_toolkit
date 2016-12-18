@@ -29,7 +29,7 @@ type Tag struct {
  ********************************/
 func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "TAGS")
+	tags, err := f.operate(params, tags)
 
 	if err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
  ********************************/
 func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "RELATED_TAGS")
+	tags, err := f.operate(params, relatedTags)
 
 	if err != nil {
 		return nil, err
@@ -64,7 +64,7 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error
  ********************************/
 func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, error) {
 
-	srs, err := f.operate(params, "TAGS_SERIES")
+	srs, err := f.operate(params, tagsSeries)
 
 	if err != nil {
 		return nil, err

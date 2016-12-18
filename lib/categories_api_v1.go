@@ -17,7 +17,7 @@ type Category struct {
  ********************************/
 func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, error) {
 
-	cats, err := f.operate(params, "CATEGORY")
+	cats, err := f.operate(params, category)
 
 	if err != nil {
 		return nil, err
@@ -35,7 +35,7 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, er
  ********************************/
 func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Categories, error) {
 
-	cats, err := f.operate(params, "CATEGORY_CHILDREN")
+	cats, err := f.operate(params, categoryChildren)
 
 	if err != nil {
 		return nil, err
@@ -53,7 +53,7 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Catego
  ********************************/
 func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categories, error) {
 
-	cats, err := f.operate(params, "CATEGORY_RELATED")
+	cats, err := f.operate(params, categoryRelated)
 
 	if err != nil {
 		return nil, err
@@ -70,7 +70,7 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categor
  ********************************/
 func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess, error) {
 
-	sers, err := f.operate(params, "CATEGORY_SERIES")
+	sers, err := f.operate(params, categorySeries)
 
 	if err != nil {
 		return nil, err
@@ -87,7 +87,7 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess,
  ********************************/
 func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "CATEGORY_TAGS")
+	tags, err := f.operate(params, categoryTags)
 
 	if err != nil {
 		return nil, err
@@ -105,7 +105,7 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, erro
  ********************************/
 func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "CATEGORY_RELATED_TAGS")
+	tags, err := f.operate(params, categoryRelatedTags)
 
 	if err != nil {
 		return nil, err

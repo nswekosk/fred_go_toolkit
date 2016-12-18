@@ -45,7 +45,7 @@ type ReleaseDate struct {
  ********************************/
 func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, error) {
 
-	rls, err := f.operate(params, "RELEASES")
+	rls, err := f.operate(params, releases)
 
 	if err != nil {
 		return nil, err
@@ -63,7 +63,7 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, erro
  ********************************/
 func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDates, error) {
 
-	rlDts, err := f.operate(params, "RELEASES_DATES")
+	rlDts, err := f.operate(params, releasesDates)
 
 	if err != nil {
 		return nil, err
@@ -80,7 +80,7 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDa
  ********************************/
 func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error) {
 
-	rls, err := f.operate(params, "RELEASE")
+	rls, err := f.operate(params, release)
 
 	if err != nil {
 		return nil, err
@@ -98,7 +98,7 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error
  ********************************/
 func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDates, error) {
 
-	rlDts, err := f.operate(params, "RELEASE_DATES")
+	rlDts, err := f.operate(params, releaseDates)
 
 	if err != nil {
 		return nil, err
@@ -116,7 +116,7 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDat
  ********************************/
 func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, error) {
 
-	rlSrs, err := f.operate(params, "RELEASE_SERIES")
+	rlSrs, err := f.operate(params, releaseSeries)
 
 	if err != nil {
 		return nil, err
@@ -134,7 +134,7 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, 
  ********************************/
 func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources, error) {
 
-	rlSrcs, err := f.operate(params, "RELEASE_SOURCES")
+	rlSrcs, err := f.operate(params, releaseSources)
 
 	if err != nil {
 		return nil, err
@@ -151,7 +151,7 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources,
  ********************************/
 func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error) {
 
-	rlTags, err := f.operate(params, "RELEASE_TAGS")
+	rlTags, err := f.operate(params, releaseTags)
 
 	if err != nil {
 		return nil, err
@@ -169,7 +169,7 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error
  ********************************/
 func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags, error) {
 
-	rlTags, err := f.operate(params, "RELEASE_RELATED_TAGS")
+	rlTags, err := f.operate(params, releaseRelatedTags)
 
 	if err != nil {
 		return nil, err

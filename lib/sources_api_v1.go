@@ -27,7 +27,7 @@ type Source struct {
  ********************************/
 func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error) {
 
-	srcs, err := f.operate(params, "SOURCES")
+	srcs, err := f.operate(params, sources)
 
 	if err != nil {
 		return nil, err
@@ -44,7 +44,7 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error)
  ********************************/
 func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) {
 
-	srcs, err := f.operate(params, "SOURCE")
+	srcs, err := f.operate(params, source)
 
 	if err != nil {
 		return nil, err
@@ -61,7 +61,7 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) 
  ********************************/
 func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*Releases, error) {
 
-	rls, err := f.operate(params, "SOURCE_RELEASES")
+	rls, err := f.operate(params, sourceReleases)
 
 	if err != nil {
 		return nil, err

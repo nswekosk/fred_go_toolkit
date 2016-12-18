@@ -65,7 +65,7 @@ type VintageDates struct {
  ********************************/
 func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) {
 
-	srs, err := f.operate(params, "SERIES")
+	srs, err := f.operate(params, series)
 
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) 
  ********************************/
 func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Categories, error) {
 
-	srsCts, err := f.operate(params, "SERIES_CATEGORIES")
+	srsCts, err := f.operate(params, seriesCategories)
 
 	if err != nil {
 		return nil, err
@@ -102,7 +102,7 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Catego
  ********************************/
 func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Observations, error) {
 
-	srsObs, err := f.operate(params, "SERIES_OBSERVATIONS")
+	srsObs, err := f.operate(params, seriesObservations)
 
 	if err != nil {
 		return nil, err
@@ -120,7 +120,7 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Obse
  ********************************/
 func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases, error) {
 
-	srsRls, err := f.operate(params, "SERIES_RELEASE")
+	srsRls, err := f.operate(params, seriesRelease)
 
 	if err != nil {
 		return nil, err
@@ -138,7 +138,7 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases,
  ********************************/
 func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, error) {
 
-	srs, err := f.operate(params, "SERIES_SEARCH")
+	srs, err := f.operate(params, seriesSearch)
 
 	if err != nil {
 		return nil, err
@@ -155,7 +155,7 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, e
  ********************************/
 func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "SERIES_SEARCH_TAGS")
+	tags, err := f.operate(params, seriesSearchTags)
 
 	if err != nil {
 		return nil, err
@@ -173,7 +173,7 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, 
  ********************************/
 func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "SERIES_SEARCH_RELATED_TAGS")
+	tags, err := f.operate(params, seriesSearchRelatedTags)
 
 	if err != nil {
 		return nil, err
@@ -191,7 +191,7 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
  ********************************/
 func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error) {
 
-	tags, err := f.operate(params, "SERIES_TAGS")
+	tags, err := f.operate(params, seriesTags)
 
 	if err != nil {
 		return nil, err
@@ -211,7 +211,7 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error)
  ********************************/
 func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, error) {
 
-	srs, err := f.operate(params, "SERIES_UPDATES")
+	srs, err := f.operate(params, seriesUpdates)
 
 	if err != nil {
 		return nil, err
@@ -231,7 +231,7 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, 
  ********************************/
 func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*VintageDates, error) {
 
-	vds, err := f.operate(params, "SERIES_VINTAGEDATES")
+	vds, err := f.operate(params, seriesVintagedates)
 
 	if err != nil {
 		return nil, err

@@ -8,17 +8,6 @@ import (
 	"strings"
 )
 
-const (
-	// FileTypeJSON will return json data from API.
-	FileTypeJSON = "json"
-	// FileTypeXML will return xml data from API.
-	FileTypeXML       = "xml"
-	apiURL            = "https://api.stlouisfed.org/fred"
-	errorNoAPIKey     = "Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account."
-	errorNoParameters = "No parameters were added. Please update you parameter input."
-	errorLibraryFail  = "There was an error in processing the query. Please contact the client administrator."
-)
-
 type FredInterface interface{}
 
 type FredClient struct {
@@ -170,12 +159,18 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (F
  ********************************/
 func formatUrl(url string, params map[string]interface{}, paramType string) string {
 
-	url += paramsLookup[paramType]["extension"].(string)
+	url += paramsLookup[paramType][paramLookupExt].(string)
+	firstParam := true
 
-	for parameter, paramVal := range params {
-		for _, param := range paramsLookup[paramType]["params"].([]string) {
-			if sameStr(parameter, param) {
-				url += ("/?" + parameter + "=" + paramVal.(string))
+	for paramKey, paramVal := range params {
+		paramOp := "&"
+		for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
+			if sameStr(paramKey, param) {
+				if firstParam {
+					paramOp = "?"
+
+				}
+				url += (paramOp + paramKey + "=" + paramVal.(string))
 			}
 		}
 	}
