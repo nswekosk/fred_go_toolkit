@@ -1,5 +1,10 @@
 package lib
 
+import (
+	"encoding/json"
+	"errors"
+)
+
 type Sources struct {
 	Start      string   `realtime_start`
 	End        string   `realtime_end`
@@ -17,4 +22,79 @@ type Source struct {
 	End   string `realtime_end`
 	Name  string `name`
 	Link  string `link`
+}
+
+func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	srcs := &Sources{}
+
+	resp, err := f.callAPI(params, "SOURCES")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(srcs)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return srcs, nil
+
+}
+
+func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	srcs := &Sources{}
+
+	resp, err := f.callAPI(params, "SOURCE")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(srcs)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return srcs, nil
+
+}
+
+func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*Releases, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	rls := &Releases{}
+
+	resp, err := f.callAPI(params, "SOURCE_RELEASES")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(rls)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return rls, nil
+
 }

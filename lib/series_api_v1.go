@@ -297,7 +297,7 @@ func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*Vint
 
 	vds := &VintageDates{}
 
-	resp, err := f.callAPI(params, "SERIES_UPDATES")
+	resp, err := f.callAPI(params, "SERIES_VINTAGEDATES")
 
 	if err != nil {
 		return nil, err
