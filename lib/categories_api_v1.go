@@ -3,7 +3,6 @@ package lib
 import (
 	"encoding/json"
 	"errors"
-	"net/http"
 )
 
 type Category struct {
@@ -12,7 +11,7 @@ type Category struct {
 	parent_id string `parent_id`
 }
 
-func (f *FredClient) GetCategory(CategoryID string) (*Category, error) {
+func (f *FredClient) GetCategory(params map[string]interface{}) (*Category, error) {
 
 	if err := f.validateAPIKEY(); err != nil {
 
@@ -20,17 +19,12 @@ func (f *FredClient) GetCategory(CategoryID string) (*Category, error) {
 
 	}
 
-	if CategoryID == "" {
-		return nil, errors.New("You must provide a cateory id to retrieve a category. CategoryID's can be found at ")
-	}
-
 	cat := &Category{}
-	url := f.requestUrl + "/category_id?=" + CategoryID
 
-	resp, err := http.Get(url)
+	resp, err := f.callAPI(params, "CATEGORY")
 
 	if err != nil {
-		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+		return nil, err
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(cat)
@@ -43,57 +37,128 @@ func (f *FredClient) GetCategory(CategoryID string) (*Category, error) {
 
 }
 
-func (f *FredClient) GetCategoryChildren(params ...string) (*[]Category, error) {
+func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*[]Category, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	return nil, nil
+	cats := &[]Category{}
+
+	resp, err := f.callAPI(params, "CATEGORY_CHILDREN")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(cats)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return cats, nil
 
 }
 
-func (f *FredClient) GetRelatedCategory(params ...string) (*[]Category, error) {
+func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*[]Category, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	return nil, nil
+	cats := &[]Category{}
+
+	resp, err := f.callAPI(params, "CATEGORY_RELATED")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(cats)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return cats, nil
 
 }
 
-func (f *FredClient) GetCategorySeries(params ...interface{}) (*Seriess, error) {
+func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	return nil, nil
+	sers := &Seriess{}
+
+	resp, err := f.callAPI(params, "CATEGORY_SERIES")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(sers)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return sers, nil
 
 }
 
-func (f *FredClient) GetCategoryTags(params ...interface{}) (*Tags, error) {
+func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	return nil, nil
+	tags := &Tags{}
+
+	resp, err := f.callAPI(params, "CATEGORY_TAGS")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(tags)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return tags, nil
 
 }
 
-func (f *FredClient) GetCategoryRelatedTags(params ...interface{}) (*Tags, error) {
+func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tags, error) {
+
 	if err := f.validateAPIKEY(); err != nil {
 
 		return nil, err
 
 	}
 
-	return nil, nil
+	tags := &Tags{}
+
+	resp, err := f.callAPI(params, "CATEGORY_RELATED_TAGS")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(tags)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return tags, nil
 
 }
