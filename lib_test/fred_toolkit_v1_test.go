@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	. "github.com/Sweko/fred_client/lib"
+	. "github.com/nswekosk/fred_client/lib"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
