@@ -1,5 +1,10 @@
 package lib
 
+import (
+	"encoding/json"
+	"errors"
+)
+
 type Tags struct {
 	Start     string   `realtime_start`
 	End       string   `realtime_end`
@@ -19,4 +24,79 @@ type Tag struct {
 	Created     string `created`
 	Popularity  int    `popularity`
 	SeriesCount int    `series_count`
+}
+
+func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	tags := &Tags{}
+
+	resp, err := f.callAPI(params, "TAGS")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(tags)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return tags, nil
+
+}
+
+func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	tags := &Tags{}
+
+	resp, err := f.callAPI(params, "RELATED_TAGS")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(tags)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return tags, nil
+
+}
+
+func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, error) {
+	if err := f.validateAPIKEY(); err != nil {
+
+		return nil, err
+
+	}
+
+	srs := &Seriess{}
+
+	resp, err := f.callAPI(params, "RELATED_TAGS")
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.NewDecoder(resp.Body).Decode(srs)
+
+	if err != nil {
+		return nil, errors.New("There was an error in processing the query. Please contact the client administrator.")
+	}
+
+	return srs, nil
+
 }
