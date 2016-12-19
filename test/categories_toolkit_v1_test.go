@@ -6,9 +6,11 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 )
 
-func TestGetCategory(t *testing.T) {
+func TestGetCategoryff(t *testing.T) {
 
 	params := make(map[string]interface{})
+
+	params["category_id"] = 125
 
 	Convey("", t, func() {
 		ctg, err := xmlFredClient.GetCategory(params)

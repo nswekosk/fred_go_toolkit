@@ -1,61 +1,61 @@
 package lib
 
 type Seriess struct {
-	Start     string   `json:"realtime_start"`
-	End       string   `json:"realtime_end"`
-	SeriesCol []Series `json:"seriess"`
+	Start     string   `json:"realtime_start" xml:"realtime_start"`
+	End       string   `json:"realtime_end" xml:"realtime_end"`
+	SeriesCol []Series `json:"seriess" xml:"seriess"`
 }
 
 type Series struct {
-	ID                     string `json:"id"`
-	Start                  string `json:"realtime_start"`
-	End                    string `json:"realtime_end"`
-	Title                  string `json:"title"`
-	ObsStart               string `json:"observation_start"`
-	ObsEnd                 string `json:"observation_end"`
-	Frequency              string `json:"annual"`
-	FrequencyShort         string `json:"frequency_short"`
-	Units                  string `json:"units"`
-	UnitsShort             string `json:"units_short"`
-	SeasonalAdjustment     string `json:"seasonal_adjustment"`
-	SeasonalAdustmentShort string `json:"seasonal_adjustment_short"`
-	LastUpdated            string `json:"last_updated"`
-	Popularity             int    `json:"popularity"`
-	Notes                  string `json:"notes"`
+	ID                     string `json:"id" xml:"id"`
+	Start                  string `json:"realtime_start" xml:"realtime_start"`
+	End                    string `json:"realtime_end" xml:"realtime_end"`
+	Title                  string `json:"title" xml:"title"`
+	ObsStart               string `json:"observation_start" xml:"observation_start"`
+	ObsEnd                 string `json:"observation_end" xml:"observation_end"`
+	Frequency              string `json:"annual" xml:"annual"`
+	FrequencyShort         string `json:"frequency_short" xml:"frequency_short"`
+	Units                  string `json:"units" xml:"units"`
+	UnitsShort             string `json:"units_short" xml:"units_short"`
+	SeasonalAdjustment     string `json:"seasonal_adjustment" xml:"seasonal_adjustment"`
+	SeasonalAdustmentShort string `json:"seasonal_adjustment_short" xml:"seasonal_adjustment_short"`
+	LastUpdated            string `json:"last_updated" xml:"last_updated"`
+	Popularity             int    `json:"popularity" xml:"popularity"`
+	Notes                  string `json:"notes" xml:"notes"`
 }
 
 type Observations struct {
-	Start        string        `json:"realtime_start"`
-	End          string        `json:"realtime_end"`
-	ObsStart     string        `json:"observation_start"`
-	ObsEnd       string        `json:"observation_end"`
-	Units        string        `json:"units"`
-	OutputType   int           `json:"output_type"`
-	FileType     string        `json:"file_type"`
-	OrderBy      string        `json:"order_by"`
-	SortOrder    string        `json:"sort_order"`
-	Count        int           `json:"count"`
-	Offset       int           `json:"offset"`
-	Limit        int           `json:"limit"`
-	Observations []Observation `json:"observations"`
+	Start        string        `json:"realtime_start" xml:"realtime_start"`
+	End          string        `json:"realtime_end" xml:"realtime_end"`
+	ObsStart     string        `json:"observation_start" xml:"observation_start"`
+	ObsEnd       string        `json:"observation_end" xml:"observation_end"`
+	Units        string        `json:"units" xml:"units"`
+	OutputType   int           `json:"output_type" xml:"output_type"`
+	FileType     string        `json:"file_type" xml:"file_type"`
+	OrderBy      string        `json:"order_by" xml:"order_by"`
+	SortOrder    string        `json:"sort_order" xml:"sort_order"`
+	Count        int           `json:"count" xml:"count"`
+	Offset       int           `json:"offset" xml:"offset"`
+	Limit        int           `json:"limit" xml:"limit"`
+	Observations []Observation `json:"observations" xml:"observations"`
 }
 
 type Observation struct {
-	Start string `json:"realtime_start"`
-	End   string `json:"realtime_end"`
-	Date  string `json:"date"`
-	Value string `json:"value"`
+	Start string `json:"realtime_start" xml:"realtime_start"`
+	End   string `json:"realtime_end" xml:"realtime_end"`
+	Date  string `json:"date" xml:"date"`
+	Value string `json:"value" xml:"value"`
 }
 
 type VintageDates struct {
-	Start        string   `json:"realtime_start"`
-	End          string   `json:"realtime_end"`
-	OrderBy      string   `json:"order_by"`
-	SortOrder    string   `json:"sort_order"`
-	Count        int      `json:"count"`
-	Offset       int      `json:"offset"`
-	Limit        int      `json:"limit"`
-	VintageDates []string `json:"vintage_dates"`
+	Start        string   `json:"realtime_start" xml:"realtime_start"`
+	End          string   `json:"realtime_end" xml:"realtime_end"`
+	OrderBy      string   `json:"order_by" xml:"order_by"`
+	SortOrder    string   `json:"sort_order" xml:"sort_order"`
+	Count        int      `json:"count" xml:"count"`
+	Offset       int      `json:"offset" xml:"offset"`
+	Limit        int      `json:"limit" xml:"limit"`
+	VintageDates []string `json:"vintage_dates" xml:"vintage_dates"`
 }
 
 /********************************

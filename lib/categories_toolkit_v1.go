@@ -5,9 +5,9 @@ type Categories struct {
 }
 
 type Category struct {
-	id        int    `json:"id"`
-	name      string `json:"name"`
-	parent_id string `json:"parent_id"`
+	ID       int    `json:"id" xml:"id"`
+	Name     string `json:"name" xml:"name"`
+	ParentID int    `json:"parent_id" xml:"parent_id"`
 }
 
 /********************************

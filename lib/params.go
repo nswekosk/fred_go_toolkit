@@ -7,8 +7,8 @@ var paramsLookup = map[string]map[string]interface{}{
 	/////////////////////////
 
 	category: {
-		paramLookupExt:    "category",
-		paramLookupParams: []string{"catetory_id"},
+		paramLookupExt:    "/category",
+		paramLookupParams: []string{"category_id"},
 	},
 	categoryChildren: {
 		paramLookupExt:    "/category/children",

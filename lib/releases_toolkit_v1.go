@@ -1,40 +1,40 @@
 package lib
 
 type Releases struct {
-	Start      string    `json:"realtime_start"`
-	End        string    `json:"realtime_end"`
-	OrderBy    string    `json:"order_by"`
-	SortOrder  string    `json:"sort_order"`
-	Count      int       `json:"count"`
-	Offset     int       `json:"offset"`
-	Limit      int       `json:"limit"`
-	ReleaseCol []Release `json:"releases"`
+	Start      string    `json:"realtime_start" xml:"realtime_start"`
+	End        string    `json:"realtime_end" xml:"realtime_end"`
+	OrderBy    string    `json:"order_by" xml:"order_by"`
+	SortOrder  string    `json:"sort_order" xml:"sort_order"`
+	Count      int       `json:"count" xml:"count"`
+	Offset     int       `json:"offset" xml:"offset"`
+	Limit      int       `json:"limit" xml:"limit"`
+	ReleaseCol []Release `json:"releases" xml:"releases"`
 }
 
 type Release struct {
-	ID           int    `json:"id"`
-	Start        string `json:"realtime_start"`
-	End          string `json:"realtime_end"`
-	Name         string `json:"name"`
-	PressRelease bool   `json:"press_release"`
-	Link         string `json:"link"`
+	ID           int    `json:"id" xml:"id"`
+	Start        string `json:"realtime_start" xml:"realtime_start"`
+	End          string `json:"realtime_end" xml:"realtime_end"`
+	Name         string `json:"name" xml:"name"`
+	PressRelease bool   `json:"press_release" xml:"press_release"`
+	Link         string `json:"link" xml:"link"`
 }
 
 type ReleaseDates struct {
-	Start           string        `json:"realtime_start"`
-	End             string        `json:"realtime_end"`
-	OrderBy         string        `json:"order_by"`
-	SortOrder       string        `json:"sort_order"`
-	Count           int           `json:"count"`
-	Offset          int           `json:"offset"`
-	Limit           int           `json:"limit"`
-	ReleaseDatesCol []ReleaseDate `json:"release_dates"`
+	Start           string        `json:"realtime_start" xml:"realtime_start"`
+	End             string        `json:"realtime_end" xml:"realtime_end"`
+	OrderBy         string        `json:"order_by" xml:"order_by"`
+	SortOrder       string        `json:"sort_order" xml:"sort_order"`
+	Count           int           `json:"count" xml:"count"`
+	Offset          int           `json:"offset" xml:"offset"`
+	Limit           int           `json:"limit" xml:"limit"`
+	ReleaseDatesCol []ReleaseDate `json:"release_dates" xml:"release_dates"`
 }
 
 type ReleaseDate struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Date string `json:"date"`
+	ID   int    `json:"id" xml:"id"`
+	Name string `json:"name" xml:"name"`
+	Date string `json:"date" xml:"date"`
 }
 
 /********************************
