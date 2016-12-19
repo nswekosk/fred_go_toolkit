@@ -6,10 +6,20 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"reflect"
+	"strconv"
 	"strings"
 )
 
 type FredInterface interface{}
+
+type FredType struct {
+	Categories
+	Releases
+	Seriess
+	Sources
+	Tags
+}
 
 type FredClient struct {
 	aPIKEY     string
@@ -32,7 +42,7 @@ func CreateClient(APIKey string, FileType ...string) (*FredClient, error) {
 	return &FredClient{
 		aPIKEY:     APIKey,
 		fileType:   FileType[0],
-		requestURL: apiURL + "?aPIKEY=" + APIKey,
+		requestURL: apiURL,
 	}, nil
 }
 
@@ -48,7 +58,7 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) {
 
 	url := strings.Split(f.requestURL, "?")
 
-	f.requestURL = url[0] + "?aPIKEY=" + APIKey
+	f.requestURL = url[0] + "?api_key=" + APIKey
 
 }
 
@@ -101,7 +111,7 @@ func (f *FredClient) validateAPIKEY() error {
  ********************************/
 func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*http.Response, error) {
 
-	url := formatUrl(f.requestURL, params, paramType)
+	url := f.formatUrl(f.requestURL, params, paramType)
 
 	if sameStr(url, f.requestURL) {
 		return nil, errors.New(errorNoParameters)
@@ -122,7 +132,7 @@ func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*
  ** Decodes the object in the
  ** format specified by ther user.
  ********************************/
-func (f *FredClient) decodeObj(resp *http.Response, obj FredInterface) (FredInterface, error) {
+func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, error) {
 	var err error
 
 	switch f.fileType {
@@ -130,18 +140,23 @@ func (f *FredClient) decodeObj(resp *http.Response, obj FredInterface) (FredInte
 		err = json.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
+			fmt.Printf("[decodeObj] JSON ERROR: %v", err.Error())
 			return nil, errors.New(errorLibraryFail)
 		}
 	case FileTypeXML:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
+			fmt.Printf("[decodeObj] XML ERROR: %v", err.Error())
+
 			return nil, errors.New(errorLibraryFail)
 		}
 	default:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
+			fmt.Printf("[decodeObj] DEFAULT ERROR: %v", err.Error())
+
 			return nil, errors.New(errorLibraryFail)
 		}
 
@@ -159,27 +174,27 @@ func (f *FredClient) decodeObj(resp *http.Response, obj FredInterface) (FredInte
  ********************************/
 func (f *FredClient) operate(params map[string]interface{}, paramType string) (FredInterface, error) {
 	if err := f.validateMethodArguments(params); err != nil {
-		fmt.Println("[operate] validateMethodArguments Error %v", err.Error())
+		fmt.Printf("[operate] validateMethodArguments Error %v", err.Error())
 		return nil, err
 	}
 
 	resp, err := f.callAPI(params, paramType)
 
 	if err != nil {
-		fmt.Println("[operate] callAPI Error %v", err.Error())
+		fmt.Printf("[operate] callAPI Error %v", err.Error())
 		return nil, err
 	}
 
-	var obj FredInterface
+	obj := &FredType{}
 
 	obj, err = f.decodeObj(resp, obj)
 
 	if err != nil {
-		fmt.Println("[operate] decodeObj Error %v", err.Error())
+		fmt.Printf("[operate] decodeObj Error %v", err.Error())
 		return nil, err
 	}
 
-	return obj, nil
+	return &obj, nil
 }
 
 /********************************
@@ -188,7 +203,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (F
  ** Formats the url per the API
  ** specifications.
  ********************************/
-func formatUrl(url string, params map[string]interface{}, paramType string) string {
+func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramType string) string {
 
 	url += paramsLookup[paramType][paramLookupExt].(string)
 	firstParam := true
@@ -201,11 +216,30 @@ func formatUrl(url string, params map[string]interface{}, paramType string) stri
 					if firstParam {
 						paramOp = "?"
 					}
-					url += (paramOp + paramKey + "=" + paramVal.(string))
+
+					val := ""
+					kind := reflect.TypeOf(paramVal).Kind()
+
+					switch kind {
+					case reflect.String:
+						val = paramVal.(string)
+						break
+					case reflect.Int:
+						val = strconv.Itoa(paramVal.(int))
+						break
+					case reflect.Bool:
+						val = strconv.FormatBool(paramVal.(bool))
+						break
+					}
+
+					url += (paramOp + paramKey + "=" + val)
 				}
 			}
 		}
 	}
+
+	url += "&api_key=" + f.aPIKEY + "&file_type=" + f.fileType
+
 	return url
 }
 
