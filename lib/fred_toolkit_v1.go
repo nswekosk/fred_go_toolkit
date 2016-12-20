@@ -41,12 +41,12 @@ type FredClient struct {
 }
 
 /********************************
- ** CreateClient
+ ** CreateFredClient
  **
  ** Creates an instance of a
  ** FRED client.
  ********************************/
-func CreateClient(APIKey string, FileType ...string) (*FredClient, error) {
+func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 
 	if sameStr(APIKey, "") {
 		return nil, errors.New(errorNoAPIKey)
