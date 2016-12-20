@@ -23,12 +23,12 @@ func TestMain(m *testing.M) {
 	xmlFredClient, err = CreateClient(apiKey, FileTypeXML)
 
 	if err != nil {
-		panic(err)
+		panic(err.Error())
 	}
 
 	jsonFredClient, err = CreateClient(apiKey, FileTypeJSON)
 	if err != nil {
-		panic(err)
+		panic(err.Error())
 	}
 
 	ret := m.Run()
@@ -40,11 +40,17 @@ func TestUpdateAPIKEY(t *testing.T) {
 	key := ""
 
 	Convey("", t, func() {
-		xmlFredClient.UpdateAPIKEY(key)
+		err := xmlFredClient.UpdateAPIKEY(key)
+
+		So(err, ShouldNotBeNil)
 	})
 
+	key = "23235234215423452345324"
+
 	Convey("", t, func() {
-		jsonFredClient.UpdateAPIKEY(key)
+		err := jsonFredClient.UpdateAPIKEY(key)
+
+		So(err, ShouldNotBeNil)
 	})
 
 }

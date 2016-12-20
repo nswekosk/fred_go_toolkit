@@ -67,7 +67,11 @@ func CreateClient(APIKey string, FileType ...string) (*FredClient, error) {
  ** Updates the API KEY for the
  ** client.
  ********************************/
-func (f *FredClient) UpdateAPIKEY(APIKey string) {
+func (f *FredClient) UpdateAPIKEY(APIKey string) error {
+
+	if APIKey == "" || len(APIKey) != 32 {
+		return errors.New("API key is invalid. Please supply a valid API key.")
+	}
 
 	f.aPIKEY = APIKey
 
@@ -75,6 +79,7 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) {
 
 	f.requestURL = url[0] + "?api_key=" + APIKey
 
+	return nil
 }
 
 /********************************
