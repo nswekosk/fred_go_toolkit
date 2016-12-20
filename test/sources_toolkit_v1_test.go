@@ -14,7 +14,7 @@ func TestGetSources(t *testing.T) {
 		srcs, err := xmlFredClient.GetSources(params)
 		So(err, ShouldBeNil)
 
-		Convey("", t, func() {
+		Convey("", func() {
 			So(srcs, ShouldNotBeNil)
 		})
 	})
@@ -23,7 +23,7 @@ func TestGetSources(t *testing.T) {
 		srcs, err := jsonFredClient.GetSources(params)
 
 		So(err, ShouldBeNil)
-		Convey("", t, func() {
+		Convey("", func() {
 			So(srcs, ShouldNotBeNil)
 		})
 	})
@@ -34,11 +34,13 @@ func TestGetSource(t *testing.T) {
 
 	params := make(map[string]interface{})
 
+	params["source_id"] = 1
+
 	Convey("", t, func() {
 		src, err := xmlFredClient.GetSource(params)
 		So(err, ShouldBeNil)
 
-		Convey("", t, func() {
+		Convey("", func() {
 			So(src, ShouldNotBeNil)
 		})
 	})
@@ -47,7 +49,7 @@ func TestGetSource(t *testing.T) {
 		src, err := jsonFredClient.GetSource(params)
 
 		So(err, ShouldBeNil)
-		Convey("", t, func() {
+		Convey("", func() {
 			So(src, ShouldNotBeNil)
 		})
 	})
@@ -58,11 +60,13 @@ func TestGetSourceReleases(t *testing.T) {
 
 	params := make(map[string]interface{})
 
+	params["source_id"] = 1
+
 	Convey("", t, func() {
 		rls, err := xmlFredClient.GetSourceReleases(params)
 		So(err, ShouldBeNil)
 
-		Convey("", t, func() {
+		Convey("", func() {
 			So(rls, ShouldNotBeNil)
 		})
 	})
@@ -71,7 +75,7 @@ func TestGetSourceReleases(t *testing.T) {
 		rls, err := jsonFredClient.GetSourceReleases(params)
 
 		So(err, ShouldBeNil)
-		Convey("", t, func() {
+		Convey("", func() {
 			So(rls, ShouldNotBeNil)
 		})
 	})
