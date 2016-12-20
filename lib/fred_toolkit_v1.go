@@ -11,8 +11,6 @@ import (
 	"strings"
 )
 
-type FredInterface interface{}
-
 type FredType struct {
 	Start        string        `json:"realtime_start" xml:"realtime_start"`
 	End          string        `json:"realtime_end" xml:"realtime_end"`
