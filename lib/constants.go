@@ -23,9 +23,10 @@ const (
 	// errors //
 	////////////
 
-	errorNoAPIKey     = "Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account."
-	errorNoParameters = "No parameters were added. Please update you parameter input."
-	errorLibraryFail  = "There was an error in processing the query. Please contact the client administrator."
+	errorNoAPIKey      = "Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account."
+	errorNoParameters  = "No parameters were added. Please update you parameter input."
+	errorLibraryFail   = "There was an error in processing the query. Please contact the client administrator."
+	errorInvalidAPIKey = "API key is invalid. Please supply a valid API key."
 
 	////////////////////////////
 	// paramLookup attributes //

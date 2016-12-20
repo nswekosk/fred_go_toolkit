@@ -81,18 +81,6 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 }
 
 /********************************
- ** validateMethodArguments
- **
- ** Validates input to method.
- ********************************/
-func (f *FredClient) validateMethodArguments(params map[string]interface{}) error {
-	if err := f.validateAPIKEY(); err != nil {
-		return err
-	}
-	return nil
-}
-
-/********************************
  ** validateAPIKEY
  **
  ** Validates that an APIKEY exists.
@@ -174,8 +162,7 @@ func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, e
  ** parameter type.
  ********************************/
 func (f *FredClient) operate(params map[string]interface{}, paramType string) (*FredType, error) {
-	if err := f.validateMethodArguments(params); err != nil {
-		fmt.Printf("[operate] validateMethodArguments Error %v", err.Error())
+	if err := f.validateAPIKEY(); err != nil {
 		return nil, err
 	}
 
