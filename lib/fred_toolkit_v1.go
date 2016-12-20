@@ -14,11 +14,26 @@ import (
 type FredInterface interface{}
 
 type FredType struct {
-	Categories
-	Releases
-	Seriess
-	Sources
-	Tags
+	Start        string        `json:"realtime_start" xml:"realtime_start"`
+	End          string        `json:"realtime_end" xml:"realtime_end"`
+	ObsStart     string        `json:"observation_start" xml:"observation_start"`
+	ObsEnd       string        `json:"observation_end" xml:"observation_end"`
+	Units        string        `json:"units" xml:"units"`
+	OutputType   int           `json:"output_type" xml:"output_type"`
+	FileType     string        `json:"file_type" xml:"file_type"`
+	OrderBy      string        `json:"order_by" xml:"order_by"`
+	SortOrder    string        `json:"sort_order" xml:"sort_order"`
+	Count        int           `json:"count" xml:"count"`
+	Offset       int           `json:"offset" xml:"offset"`
+	Limit        int           `json:"limit" xml:"limit"`
+	Categories   []Category    `json:"categories"`
+	Release      []Release     `json:"releases" xml:"releases"`
+	Seriess      []Series      `json:"seriess" xml:"seriess"`
+	Observations []Observation `json:"observations" xml:"observations"`
+	VintageDates []string      `json:"vintage_dates" xml:"vintage_dates"`
+	Tags         []Tag         `json:"tag" xml:"tag"`
+	Sources      []Source      `json:"sources" xml:"sources"`
+	ReleaseDates []ReleaseDate `json:"release_dates" xml:"release_dates"`
 }
 
 type FredClient struct {
@@ -172,7 +187,7 @@ func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, e
  ** Runs the operation based
  ** parameter type.
  ********************************/
-func (f *FredClient) operate(params map[string]interface{}, paramType string) (FredInterface, error) {
+func (f *FredClient) operate(params map[string]interface{}, paramType string) (*FredType, error) {
 	if err := f.validateMethodArguments(params); err != nil {
 		fmt.Printf("[operate] validateMethodArguments Error %v", err.Error())
 		return nil, err
@@ -194,7 +209,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (F
 		return nil, err
 	}
 
-	return &obj, nil
+	return obj, nil
 }
 
 /********************************

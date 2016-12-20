@@ -27,15 +27,15 @@ type Tag struct {
  ** Get all tags, search for tags,
  ** or get tags by name.
  ********************************/
-func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, tags)
+	fc, err := f.operate(params, tags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -45,15 +45,15 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*Tags, error) {
  ** Get the related tags for one
  ** or more tags.
  ********************************/
-func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, relatedTags)
+	fc, err := f.operate(params, relatedTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -62,14 +62,14 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*Tags, error
  **
  ** Get the series matching tags.
  ********************************/
-func (f *FredClient) GetTagSeries(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetTagSeries(params map[string]interface{}) (*FredType, error) {
 
-	srs, err := f.operate(params, tagsSeries)
+	fc, err := f.operate(params, tagsSeries)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srs.(*Seriess)), nil
+	return fc, nil
 
 }

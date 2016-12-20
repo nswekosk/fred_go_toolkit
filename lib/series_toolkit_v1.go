@@ -63,15 +63,15 @@ type VintageDates struct {
  **
  ** Get an economic data series.
  ********************************/
-func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error) {
 
-	srs, err := f.operate(params, series)
+	fc, err := f.operate(params, series)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srs.(*Seriess)), nil
+	return fc, nil
 
 }
 
@@ -81,15 +81,15 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*Seriess, error) 
  ** Get the categories for an
  ** economic data series.
  ********************************/
-func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Categories, error) {
+func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredType, error) {
 
-	srsCts, err := f.operate(params, seriesCategories)
+	fc, err := f.operate(params, seriesCategories)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srsCts.(*Categories)), nil
+	return fc, nil
 
 }
 
@@ -100,15 +100,15 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*Catego
  ** values for an economic data
  ** series.
  ********************************/
-func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Observations, error) {
+func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*FredType, error) {
 
-	srsObs, err := f.operate(params, seriesObservations)
+	fc, err := f.operate(params, seriesObservations)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srsObs.(*Observations)), nil
+	return fc, nil
 
 }
 
@@ -118,15 +118,15 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Obse
  ** Get the release for an economic
  ** data series.
  ********************************/
-func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases, error) {
+func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType, error) {
 
-	srsRls, err := f.operate(params, seriesRelease)
+	fc, err := f.operate(params, seriesRelease)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srsRls.(*Releases)), nil
+	return fc, nil
 
 }
 
@@ -136,15 +136,15 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*Releases,
  ** Get economic data series that
  ** match keywords.
  ********************************/
-func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, error) {
 
-	srs, err := f.operate(params, seriesSearch)
+	fc, err := f.operate(params, seriesSearch)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srs.(*Seriess)), nil
+	return fc, nil
 
 }
 
@@ -153,15 +153,15 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*Seriess, e
  **
  ** Get the tags for a series search.
  ********************************/
-func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, seriesSearchTags)
+	fc, err := f.operate(params, seriesSearchTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -171,15 +171,15 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*Tags, 
  ** Get teh related tags for a
  ** series search.
  ********************************/
-func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, seriesSearchRelatedTags)
+	fc, err := f.operate(params, seriesSearchRelatedTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -189,15 +189,15 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
  ** Get the tags for an economic
  ** data series.
  ********************************/
-func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, seriesTags)
+	fc, err := f.operate(params, seriesTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -209,15 +209,15 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*Tags, error)
  ** were updated on the FRED
  ** server.
  ********************************/
-func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType, error) {
 
-	srs, err := f.operate(params, seriesUpdates)
+	fc, err := f.operate(params, seriesUpdates)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srs.(*Seriess)), nil
+	return fc, nil
 
 }
 
@@ -229,14 +229,14 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*Seriess, 
  ** revised or new data values
  ** were released.
  ********************************/
-func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*VintageDates, error) {
+func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*FredType, error) {
 
-	vds, err := f.operate(params, seriesVintagedates)
+	fc, err := f.operate(params, seriesVintagedates)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (vds.(*VintageDates)), nil
+	return fc, nil
 
 }

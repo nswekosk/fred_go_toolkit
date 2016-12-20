@@ -15,15 +15,15 @@ type Category struct {
  **
  ** Get a category.
  ********************************/
-func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, error) {
+func (f *FredClient) GetCategory(params map[string]interface{}) (*FredType, error) {
 
-	cats, err := f.operate(params, category)
+	fc, err := f.operate(params, category)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (cats.(*Categories)), nil
+	return fc, nil
 
 }
 
@@ -33,15 +33,15 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*Categories, er
  ** Get the child categories for
  ** a specified parent category
  ********************************/
-func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Categories, error) {
+func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*FredType, error) {
 
-	cats, err := f.operate(params, categoryChildren)
+	fc, err := f.operate(params, categoryChildren)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (cats.(*Categories)), nil
+	return fc, nil
 
 }
 
@@ -51,15 +51,15 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*Catego
  ** Get the related categories
  ** for a category.
  ********************************/
-func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categories, error) {
+func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*FredType, error) {
 
-	cats, err := f.operate(params, categoryRelated)
+	fc, err := f.operate(params, categoryRelated)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (cats.(*Categories)), nil
+	return fc, nil
 
 }
 
@@ -68,15 +68,15 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*Categor
  **
  ** Get the series in a category.
  ********************************/
-func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*FredType, error) {
 
-	sers, err := f.operate(params, categorySeries)
+	fc, err := f.operate(params, categorySeries)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (sers.(*Seriess)), nil
+	return fc, nil
 
 }
 
@@ -85,15 +85,15 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*Seriess,
  **
  ** Get the tags for a category.
  ********************************/
-func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, categoryTags)
+	fc, err := f.operate(params, categoryTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -103,14 +103,14 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*Tags, erro
  ** Get the related tags for a
  ** category.
  ********************************/
-func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	tags, err := f.operate(params, categoryRelatedTags)
+	fc, err := f.operate(params, categoryRelatedTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (tags.(*Tags)), nil
+	return fc, nil
 
 }

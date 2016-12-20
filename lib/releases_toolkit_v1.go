@@ -43,15 +43,15 @@ type ReleaseDate struct {
  ** Get all releases of economic
  ** data.
  ********************************/
-func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, error) {
+func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, error) {
 
-	rls, err := f.operate(params, releases)
+	fc, err := f.operate(params, releases)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rls.(*Releases)), nil
+	return fc, nil
 
 }
 
@@ -61,15 +61,15 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*Releases, erro
  ** Get release dates for all
  ** releases of economic data.
  ********************************/
-func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDates, error) {
+func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType, error) {
 
-	rlDts, err := f.operate(params, releasesDates)
+	fc, err := f.operate(params, releasesDates)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlDts.(*ReleaseDates)), nil
+	return fc, nil
 
 }
 
@@ -78,15 +78,15 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*ReleaseDa
  **
  ** Get a release of economic data.
  ********************************/
-func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error) {
+func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error) {
 
-	rls, err := f.operate(params, release)
+	fc, err := f.operate(params, release)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rls.(*Releases)), nil
+	return fc, nil
 
 }
 
@@ -96,15 +96,15 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*Releases, error
  ** Get release dates for a release
  ** of economic data.
  ********************************/
-func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDates, error) {
+func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, error) {
 
-	rlDts, err := f.operate(params, releaseDates)
+	fc, err := f.operate(params, releaseDates)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlDts.(*ReleaseDates)), nil
+	return fc, nil
 
 }
 
@@ -114,15 +114,15 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*ReleaseDat
  ** Get the series on a release of
  ** economic data.
  ********************************/
-func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, error) {
+func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType, error) {
 
-	rlSrs, err := f.operate(params, releaseSeries)
+	fc, err := f.operate(params, releaseSeries)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlSrs.(*Seriess)), nil
+	return fc, nil
 
 }
 
@@ -132,15 +132,15 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*Seriess, 
  ** Get the sources for a Release
  ** of economic data.
  ********************************/
-func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources, error) {
+func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType, error) {
 
-	rlSrcs, err := f.operate(params, releaseSources)
+	fc, err := f.operate(params, releaseSources)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlSrcs.(*Sources)), nil
+	return fc, nil
 
 }
 
@@ -149,15 +149,15 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*Sources,
  **
  ** Get the tags for a release.
  ********************************/
-func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, error) {
 
-	rlTags, err := f.operate(params, releaseTags)
+	fc, err := f.operate(params, releaseTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlTags.(*Tags)), nil
+	return fc, nil
 
 }
 
@@ -167,15 +167,15 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*Tags, error
  ** Get the related tags for a
  ** release.
  ********************************/
-func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Tags, error) {
+func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	rlTags, err := f.operate(params, releaseRelatedTags)
+	fc, err := f.operate(params, releaseRelatedTags)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rlTags.(*Tags)), nil
+	return fc, nil
 
 }
 

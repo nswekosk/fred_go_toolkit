@@ -25,15 +25,15 @@ type Source struct {
  ** Get all sources of economic
  ** data.
  ********************************/
-func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error) {
+func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error) {
 
-	srcs, err := f.operate(params, sources)
+	fc, err := f.operate(params, sources)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srcs.(*Sources)), nil
+	return fc, nil
 
 }
 
@@ -42,15 +42,15 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*Sources, error)
  **
  ** Get a source of economic data.
  ********************************/
-func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) {
+func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error) {
 
-	srcs, err := f.operate(params, source)
+	fc, err := f.operate(params, source)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (srcs.(*Sources)), nil
+	return fc, nil
 
 }
 
@@ -59,14 +59,14 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*Sources, error) 
  **
  ** Get the releases for a source.
  ********************************/
-func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*Releases, error) {
+func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*FredType, error) {
 
-	rls, err := f.operate(params, sourceReleases)
+	fc, err := f.operate(params, sourceReleases)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return (rls.(*Releases)), nil
+	return fc, nil
 
 }
