@@ -53,7 +53,7 @@ func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 	}
 
 	fileType := ""
-	if len(FileType) == 0 {
+	if len(FileType) != 0 {
 		fileType = FileType[0]
 	}
 
@@ -237,7 +237,12 @@ func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramT
 		url += "/?"
 	}
 
-	url += "api_key=" + f.aPIKEY + "&file_type=" + f.fileType
+	fileType := ""
+	if len(f.fileType) != 0 {
+		fileType = f.fileType
+	}
+
+	url += "api_key=" + f.aPIKEY + "&file_type=" + fileType
 
 	return url
 }

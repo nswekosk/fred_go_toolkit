@@ -20,13 +20,13 @@ func TestMain(m *testing.M) {
 
 	var err error
 
-	xmlFredClient, err = CreateClient(apiKey, FileTypeXML)
+	xmlFredClient, err = CreateFredClient(apiKey, FileTypeXML)
 
 	if err != nil {
 		panic(err.Error())
 	}
 
-	jsonFredClient, err = CreateClient(apiKey, FileTypeJSON)
+	jsonFredClient, err = CreateFredClient(apiKey, FileTypeJSON)
 	if err != nil {
 		panic(err.Error())
 	}
