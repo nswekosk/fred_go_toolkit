@@ -1,17 +1,5 @@
 package lib
 
-type Tags struct {
-	Start     string   `json:"realtime_start" xml:"realtime_start"`
-	End       string   `json:"realtime_end" xml:"realtime_end"`
-	OrderBy   string   `json:"order_by" xml:"order_by"`
-	SortOrder string   `json:"sort_order" xml:"sort_order"`
-	Count     int      `json:"count" xml:"count"`
-	Offset    int      `json:"offset" xml:"offset"`
-	Limit     int      `json:"limit" xml:"limit"`
-	Tags      []Tag    `json:"tag" xml:"tag"`
-	Sources   []Source `json:"sources" xml:"sources"`
-}
-
 type Tag struct {
 	Name        string `json:"name" xml:"name"`
 	GroupID     string `json:"group_id" xml:"group_id"`

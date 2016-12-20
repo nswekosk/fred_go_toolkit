@@ -1,16 +1,5 @@
 package lib
 
-type Sources struct {
-	Start      string   `json:"realtime_start" xml:"realtime_start"`
-	End        string   `json:"realtime_end" xml:"realtime_end"`
-	OrderBy    string   `json:"order_by" xml:"order_by"`
-	SortOrder  string   `json:"sort_order" xml:"sort_order"`
-	Count      int      `json:"count" xml:"count"`
-	Offset     int      `json:"offset" xml:"offset"`
-	Limit      int      `json:"limit" xml:"limit"`
-	SourcesCol []Source `json:"sources" xml:"sources"`
-}
-
 type Source struct {
 	ID    int    `json:"id" xml:"id"`
 	Start string `json:"realtime_start" xml:"realtime_start"`
