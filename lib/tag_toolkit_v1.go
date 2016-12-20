@@ -20,6 +20,7 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 	fc, err := f.operate(params, tags)
 
 	if err != nil {
+		f.logError(tags, err)
 		return nil, err
 	}
 
@@ -38,6 +39,7 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, e
 	fc, err := f.operate(params, relatedTags)
 
 	if err != nil {
+		f.logError(relatedTags, err)
 		return nil, err
 	}
 
@@ -55,6 +57,7 @@ func (f *FredClient) GetTagSeries(params map[string]interface{}) (*FredType, err
 	fc, err := f.operate(params, tagsSeries)
 
 	if err != nil {
+		f.logError(tagsSeries, err)
 		return nil, err
 	}
 

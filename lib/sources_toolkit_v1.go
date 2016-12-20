@@ -19,6 +19,7 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error
 	fc, err := f.operate(params, sources)
 
 	if err != nil {
+		f.logError(sources, err)
 		return nil, err
 	}
 
@@ -36,6 +37,7 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error)
 	fc, err := f.operate(params, source)
 
 	if err != nil {
+		f.logError(source, err)
 		return nil, err
 	}
 
@@ -53,6 +55,7 @@ func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*FredType
 	fc, err := f.operate(params, sourceReleases)
 
 	if err != nil {
+		f.logError(sourceReleases, err)
 		return nil, err
 	}
 

@@ -26,6 +26,7 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, erro
 	fc, err := f.operate(params, releases)
 
 	if err != nil {
+		f.logError(releases, err)
 		return nil, err
 	}
 
@@ -44,6 +45,7 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType,
 	fc, err := f.operate(params, releasesDates)
 
 	if err != nil {
+		f.logError(releasesDates, err)
 		return nil, err
 	}
 
@@ -61,6 +63,7 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error
 	fc, err := f.operate(params, release)
 
 	if err != nil {
+		f.logError(release, err)
 		return nil, err
 	}
 
@@ -79,6 +82,7 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, 
 	fc, err := f.operate(params, releaseDates)
 
 	if err != nil {
+		f.logError(releaseDates, err)
 		return nil, err
 	}
 
@@ -97,6 +101,7 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType,
 	fc, err := f.operate(params, releaseSeries)
 
 	if err != nil {
+		f.logError(releaseSeries, err)
 		return nil, err
 	}
 
@@ -115,6 +120,7 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType
 	fc, err := f.operate(params, releaseSources)
 
 	if err != nil {
+		f.logError(releaseSources, err)
 		return nil, err
 	}
 
@@ -132,6 +138,7 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, e
 	fc, err := f.operate(params, releaseTags)
 
 	if err != nil {
+		f.logError(releaseTags, err)
 		return nil, err
 	}
 
@@ -150,6 +157,7 @@ func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Fred
 	fc, err := f.operate(params, releaseRelatedTags)
 
 	if err != nil {
+		f.logError(releaseRelatedTags, err)
 		return nil, err
 	}
 

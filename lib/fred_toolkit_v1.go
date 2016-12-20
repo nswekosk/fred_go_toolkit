@@ -5,7 +5,9 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
@@ -38,6 +40,7 @@ type FredClient struct {
 	aPIKEY     string
 	fileType   string
 	requestURL string
+	logFile    *os.File
 }
 
 /********************************
@@ -52,6 +55,13 @@ func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 		return nil, errors.New(errorNoAPIKey)
 	}
 
+	f, err := os.OpenFile("fred.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Println("Error opening log file: %v", err.Error())
+		return nil, err
+	}
+	log.SetOutput(f)
+
 	fileType := ""
 	if len(FileType) != 0 {
 		fileType = FileType[0]
@@ -61,6 +71,7 @@ func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 		aPIKEY:     APIKey,
 		fileType:   fileType,
 		requestURL: apiURL,
+		logFile:    f,
 	}, nil
 }
 
@@ -73,6 +84,7 @@ func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 
 	if APIKey == "" || len(APIKey) != 32 {
+		f.log(errorInvalidAPIKey)
 		return errors.New(errorInvalidAPIKey)
 	}
 
@@ -107,13 +119,10 @@ func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*
 
 	url := f.formatUrl(f.requestURL, params, paramType)
 
-	if sameStr(url, f.requestURL) {
-		return nil, errors.New(errorNoParameters)
-	}
-
 	resp, err := http.Get(url)
 
 	if err != nil {
+		f.log("[callAPI] Error with HTTP Call: " + err.Error())
 		return nil, errors.New(errorLibraryFail)
 	}
 
@@ -134,23 +143,21 @@ func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, e
 		err = json.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
-			fmt.Printf("[decodeObj] JSON ERROR: %v", err.Error())
+			f.log("[decodeObj] JSON ERROR: " + err.Error())
 			return nil, errors.New(errorLibraryFail)
 		}
 	case FileTypeXML:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
-			fmt.Printf("[decodeObj] XML ERROR: %v", err.Error())
-
+			f.log("[decodeObj] XML ERROR: " + err.Error())
 			return nil, errors.New(errorLibraryFail)
 		}
 	default:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
-			fmt.Printf("[decodeObj] DEFAULT ERROR: %v", err.Error())
-
+			f.log("[decodeObj] DEFAULT ERROR: " + err.Error())
 			return nil, errors.New(errorLibraryFail)
 		}
 
@@ -174,7 +181,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (*
 	resp, err := f.callAPI(params, paramType)
 
 	if err != nil {
-		fmt.Printf("[operate] callAPI Error %v", err.Error())
+		f.log("[operate] callAPI Error " + err.Error())
 		return nil, err
 	}
 
@@ -183,7 +190,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (*
 	obj, err = f.decodeObj(resp, obj)
 
 	if err != nil {
-		fmt.Printf("[operate] decodeObj Error %v", err.Error())
+		fmt.Printf("[operate] decodeObj Error " + err.Error())
 		return nil, err
 	}
 
@@ -252,4 +259,13 @@ func sameStr(str1 string, str2 string) bool {
 		return true
 	}
 	return false
+}
+
+func (f *FredClient) log(logMes string) {
+	log.Println(logMes)
+}
+
+func (f *FredClient) logError(method string, err error) {
+	log.Fatalf("METHOD: %v ERROR: %v", method, err.Error())
+	f.logFile.Close()
 }

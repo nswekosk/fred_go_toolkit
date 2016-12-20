@@ -35,6 +35,7 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error)
 	fc, err := f.operate(params, series)
 
 	if err != nil {
+		f.logError(series, err)
 		return nil, err
 	}
 
@@ -53,6 +54,7 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredTy
 	fc, err := f.operate(params, seriesCategories)
 
 	if err != nil {
+		f.logError(seriesCategories, err)
 		return nil, err
 	}
 
@@ -72,6 +74,7 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Fred
 	fc, err := f.operate(params, seriesObservations)
 
 	if err != nil {
+		f.logError(seriesObservations, err)
 		return nil, err
 	}
 
@@ -90,6 +93,7 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType,
 	fc, err := f.operate(params, seriesRelease)
 
 	if err != nil {
+		f.logError(seriesRelease, err)
 		return nil, err
 	}
 
@@ -108,6 +112,7 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, 
 	fc, err := f.operate(params, seriesSearch)
 
 	if err != nil {
+		f.logError(seriesSearch, err)
 		return nil, err
 	}
 
@@ -125,6 +130,7 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredTy
 	fc, err := f.operate(params, seriesSearchTags)
 
 	if err != nil {
+		f.logError(seriesSearchTags, err)
 		return nil, err
 	}
 
@@ -143,6 +149,7 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
 	fc, err := f.operate(params, seriesSearchRelatedTags)
 
 	if err != nil {
+		f.logError(seriesSearchRelatedTags, err)
 		return nil, err
 	}
 
@@ -161,6 +168,7 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, er
 	fc, err := f.operate(params, seriesTags)
 
 	if err != nil {
+		f.logError(seriesTags, err)
 		return nil, err
 	}
 
@@ -181,6 +189,7 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType,
 	fc, err := f.operate(params, seriesUpdates)
 
 	if err != nil {
+		f.logError(seriesUpdates, err)
 		return nil, err
 	}
 
@@ -201,6 +210,7 @@ func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*Fred
 	fc, err := f.operate(params, seriesVintagedates)
 
 	if err != nil {
+		f.logError(seriesVintagedates, err)
 		return nil, err
 	}
 

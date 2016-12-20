@@ -20,6 +20,7 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*FredType, erro
 	fc, err := f.operate(params, category)
 
 	if err != nil {
+		f.logError(category, err)
 		return nil, err
 	}
 
@@ -38,6 +39,7 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*FredTy
 	fc, err := f.operate(params, categoryChildren)
 
 	if err != nil {
+		f.logError(categoryChildren, err)
 		return nil, err
 	}
 
@@ -56,6 +58,7 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*FredTyp
 	fc, err := f.operate(params, categoryRelated)
 
 	if err != nil {
+		f.logError(categoryRelated, err)
 		return nil, err
 	}
 
@@ -73,6 +76,7 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*FredType
 	fc, err := f.operate(params, categorySeries)
 
 	if err != nil {
+		f.logError(categorySeries, err)
 		return nil, err
 	}
 
@@ -90,6 +94,7 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*FredType, 
 	fc, err := f.operate(params, categoryTags)
 
 	if err != nil {
+		f.logError(categoryTags, err)
 		return nil, err
 	}
 
@@ -108,6 +113,7 @@ func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*Fre
 	fc, err := f.operate(params, categoryRelatedTags)
 
 	if err != nil {
+		f.logError(categoryRelatedTags, err)
 		return nil, err
 	}
 
