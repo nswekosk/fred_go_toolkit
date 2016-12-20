@@ -91,23 +91,6 @@ func (f *FredClient) validateMethodArguments(params map[string]interface{}) erro
 	if err := f.validateAPIKEY(); err != nil {
 		return err
 	}
-	if err := f.validateParams(params); err != nil {
-		return err
-	}
-	return nil
-}
-
-/********************************
- ** validateParams
- **
- ** Validates method parameters.
- ********************************/
-func (f *FredClient) validateParams(params map[string]interface{}) error {
-
-	if len(params) == 0 {
-		return errors.New(errorNoParams)
-	}
-
 	return nil
 }
 
@@ -228,37 +211,42 @@ func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramT
 	url += paramsLookup[paramType][paramLookupExt].(string)
 	firstParam := true
 
-	for paramKey, paramVal := range params {
-		if !sameStr(paramKey, "") || !sameStr(paramVal.(string), "") {
-			paramOp := "&"
-			for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
-				if sameStr(paramKey, param) {
-					if firstParam {
-						paramOp = "?"
+	if len(params) != 0 {
+		for paramKey, paramVal := range params {
+			if !sameStr(paramKey, "") || !sameStr(paramVal.(string), "") {
+				paramOp := "&"
+				for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
+					if sameStr(paramKey, param) {
+						if firstParam {
+							paramOp = "?"
+						}
+
+						val := ""
+						kind := reflect.TypeOf(paramVal).Kind()
+
+						switch kind {
+						case reflect.String:
+							val = paramVal.(string)
+							break
+						case reflect.Int:
+							val = strconv.Itoa(paramVal.(int))
+							break
+						case reflect.Bool:
+							val = strconv.FormatBool(paramVal.(bool))
+							break
+						}
+
+						url += (paramOp + paramKey + "=" + val)
 					}
-
-					val := ""
-					kind := reflect.TypeOf(paramVal).Kind()
-
-					switch kind {
-					case reflect.String:
-						val = paramVal.(string)
-						break
-					case reflect.Int:
-						val = strconv.Itoa(paramVal.(int))
-						break
-					case reflect.Bool:
-						val = strconv.FormatBool(paramVal.(bool))
-						break
-					}
-
-					url += (paramOp + paramKey + "=" + val)
 				}
 			}
 		}
+		url += "&"
+	} else {
+		url += "/?"
 	}
 
-	url += "&api_key=" + f.aPIKEY + "&file_type=" + f.fileType
+	url += "api_key=" + f.aPIKEY + "&file_type=" + f.fileType
 
 	return url
 }

@@ -23,7 +23,6 @@ const (
 	// errors //
 	////////////
 
-	errorNoParams     = "Operation may not be performed witout parameters. Refer to 'https://research.stlouisfed.org/docs/api/fred/' for method-specific parameters."
 	errorNoAPIKey     = "Operation may not be performed without an APIKEY. APIKEY's can be retrieved at your research.stlouisfed.org user account."
 	errorNoParameters = "No parameters were added. Please update you parameter input."
 	errorLibraryFail  = "There was an error in processing the query. Please contact the client administrator."
