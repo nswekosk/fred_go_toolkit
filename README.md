@@ -25,7 +25,7 @@ params := make(map[string]interface{})
     type interface{} because it can take int's, string's, or booleans.    
     Each will be converted to string format for the url.                  
 
-params["category_id"] = 124
+params["category_id"] = 125
 
     url: 'https://api.stlouisfed.org/fred/category?category_id=125&api_key=apiKey&file_type=json' 
 
