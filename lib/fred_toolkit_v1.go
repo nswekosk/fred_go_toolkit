@@ -52,9 +52,14 @@ func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
 		return nil, errors.New(errorNoAPIKey)
 	}
 
+	fileType := ""
+	if len(FileType) == 0 {
+		fileType = FileType[0]
+	}
+
 	return &FredClient{
 		aPIKEY:     APIKey,
-		fileType:   FileType[0],
+		fileType:   fileType,
 		requestURL: apiURL,
 	}, nil
 }
