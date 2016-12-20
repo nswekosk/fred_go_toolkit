@@ -227,6 +227,7 @@ func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramT
 						switch kind {
 						case reflect.String:
 							val = paramVal.(string)
+							val = strings.Replace(val, " ", "+", -1)
 							break
 						case reflect.Int:
 							val = strconv.Itoa(paramVal.(int))
