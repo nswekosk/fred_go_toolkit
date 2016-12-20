@@ -6,7 +6,7 @@ This is a GoLang client for retrieving the Federal Reserve Economic Data. FRED c
 ## Installation
 
    Setup/confirm setup for Go environment.
-   Run 'go get github.com/nswekosk/fred_go_toolkit
+   Run 'go get github.com/nswekosk/fred_go_toolkit'
 
 ## Get a FRED API key
 
