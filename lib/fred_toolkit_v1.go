@@ -26,14 +26,14 @@ type FredType struct {
 	Count        int           `json:"count" xml:"count"`
 	Offset       int           `json:"offset" xml:"offset"`
 	Limit        int           `json:"limit" xml:"limit"`
-	Categories   []Category    `json:"categories"`
-	Release      []Release     `json:"releases" xml:"releases"`
-	Seriess      []Series      `json:"seriess" xml:"seriess"`
-	Observations []Observation `json:"observations" xml:"observations"`
-	VintageDates []string      `json:"vintage_dates" xml:"vintage_dates"`
+	Categories   []Category    `json:"categories" xml:"category"`
+	Release      []Release     `json:"releases" xml:"release"`
+	Seriess      []Series      `json:"seriess" xml:"series"`
+	Observations []Observation `json:"observations" xml:"observation"`
+	VintageDates []string      `json:"vintage_dates" xml:"vintage_date"`
 	Tags         []Tag         `json:"tag" xml:"tag"`
-	Sources      []Source      `json:"sources" xml:"sources"`
-	ReleaseDates []ReleaseDate `json:"release_dates" xml:"release_dates"`
+	Sources      []Source      `json:"sources" xml:"source"`
+	ReleaseDates []ReleaseDate `json:"release_dates" xml:"release_date"`
 }
 
 type FredClient struct {
@@ -188,7 +188,6 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (*
 	obj := &FredType{}
 
 	obj, err = f.decodeObj(resp, obj)
-
 	if err != nil {
 		fmt.Printf("[operate] decodeObj Error " + err.Error())
 		return nil, err

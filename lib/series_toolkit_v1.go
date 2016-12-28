@@ -1,28 +1,28 @@
 package lib
 
 type Series struct {
-	ID                     string `json:"id" xml:"id"`
-	Start                  string `json:"realtime_start" xml:"realtime_start"`
-	End                    string `json:"realtime_end" xml:"realtime_end"`
-	Title                  string `json:"title" xml:"title"`
-	ObsStart               string `json:"observation_start" xml:"observation_start"`
-	ObsEnd                 string `json:"observation_end" xml:"observation_end"`
-	Frequency              string `json:"annual" xml:"annual"`
-	FrequencyShort         string `json:"frequency_short" xml:"frequency_short"`
-	Units                  string `json:"units" xml:"units"`
-	UnitsShort             string `json:"units_short" xml:"units_short"`
-	SeasonalAdjustment     string `json:"seasonal_adjustment" xml:"seasonal_adjustment"`
-	SeasonalAdustmentShort string `json:"seasonal_adjustment_short" xml:"seasonal_adjustment_short"`
-	LastUpdated            string `json:"last_updated" xml:"last_updated"`
-	Popularity             int    `json:"popularity" xml:"popularity"`
-	Notes                  string `json:"notes" xml:"notes"`
+	ID                     string `json:"id" xml:"id,attr"`
+	Start                  string `json:"realtime_start" xml:"realtime_start,attr"`
+	End                    string `json:"realtime_end" xml:"realtime_end,attr"`
+	Title                  string `json:"title" xml:"title,attr"`
+	ObsStart               string `json:"observation_start" xml:"observation_start,attr"`
+	ObsEnd                 string `json:"observation_end" xml:"observation_end,attr"`
+	Frequency              string `json:"annual" xml:"annual,attr"`
+	FrequencyShort         string `json:"frequency_short" xml:"frequency_short,attr"`
+	Units                  string `json:"units" xml:"units,attr"`
+	UnitsShort             string `json:"units_short" xml:"units_short,attr"`
+	SeasonalAdjustment     string `json:"seasonal_adjustment" xml:"seasonal_adjustment,attr"`
+	SeasonalAdustmentShort string `json:"seasonal_adjustment_short" xml:"seasonal_adjustment_short,attr"`
+	LastUpdated            string `json:"last_updated" xml:"last_updated,attr"`
+	Popularity             int    `json:"popularity" xml:"popularity,attr"`
+	Notes                  string `json:"notes" xml:"notes,attr"`
 }
 
 type Observation struct {
-	Start string `json:"realtime_start" xml:"realtime_start"`
-	End   string `json:"realtime_end" xml:"realtime_end"`
-	Date  string `json:"date" xml:"date"`
-	Value string `json:"value" xml:"value"`
+	Start string `json:"realtime_start" xml:"realtime_start,attr"`
+	End   string `json:"realtime_end" xml:"realtime_end,attr"`
+	Date  string `json:"date" xml:"date,attr"`
+	Value string `json:"value" xml:"value,attr"`
 }
 
 /********************************

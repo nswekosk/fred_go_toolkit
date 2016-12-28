@@ -1,11 +1,11 @@
 package lib
 
 type Source struct {
-	ID    int    `json:"id" xml:"id"`
-	Start string `json:"realtime_start" xml:"realtime_start"`
-	End   string `json:"realtime_end" xml:"realtime_end"`
-	Name  string `json:"name" xml:"name"`
-	Link  string `json:"link" xml:"link"`
+	ID    int    `json:"id" xml:"id,attr"`
+	Start string `json:"realtime_start" xml:"realtime_start,attr"`
+	End   string `json:"realtime_end" xml:"realtime_end,attr"`
+	Name  string `json:"name" xml:"name,attr"`
+	Link  string `json:"link" xml:"link,attr"`
 }
 
 /********************************

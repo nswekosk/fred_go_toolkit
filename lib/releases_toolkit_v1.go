@@ -1,18 +1,18 @@
 package lib
 
 type Release struct {
-	ID           int    `json:"id" xml:"id"`
-	Start        string `json:"realtime_start" xml:"realtime_start"`
-	End          string `json:"realtime_end" xml:"realtime_end"`
-	Name         string `json:"name" xml:"name"`
-	PressRelease bool   `json:"press_release" xml:"press_release"`
-	Link         string `json:"link" xml:"link"`
+	ID           int    `json:"id" xml:"id,attr"`
+	Start        string `json:"realtime_start" xml:"realtime_start,attr"`
+	End          string `json:"realtime_end" xml:"realtime_end,attr"`
+	Name         string `json:"name" xml:"name,attr"`
+	PressRelease bool   `json:"press_release" xml:"press_release,attr"`
+	Link         string `json:"link" xml:"link,attr"`
 }
 
 type ReleaseDate struct {
-	ID   int    `json:"id" xml:"id"`
-	Name string `json:"name" xml:"name"`
-	Date string `json:"date" xml:"date"`
+	ID   int    `json:"id" xml:"id,attr"`
+	Name string `json:"name" xml:"name,attr"`
+	Date string `json:"date" xml:"date,attr"`
 }
 
 /********************************

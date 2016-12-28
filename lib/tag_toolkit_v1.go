@@ -1,12 +1,12 @@
 package lib
 
 type Tag struct {
-	Name        string `json:"name" xml:"name"`
-	GroupID     string `json:"group_id" xml:"group_id"`
-	Notes       string `json:"notes" xml:"notes"`
-	Created     string `json:"created" xml:"created"`
-	Popularity  int    `json:"popularity" xml:"popularity"`
-	SeriesCount int    `json:"series_count" xml:"series_count"`
+	Name        string `json:"name" xml:"name,attr"`
+	GroupID     string `json:"group_id" xml:"group_id,attr"`
+	Notes       string `json:"notes" xml:"notes,attr"`
+	Created     string `json:"created" xml:"created,attr"`
+	Popularity  int    `json:"popularity" xml:"popularity,attr"`
+	SeriesCount int    `json:"series_count" xml:"series_count,attr"`
 }
 
 /********************************
