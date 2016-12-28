@@ -18,6 +18,11 @@ func TestGetCategory(t *testing.T) {
 
 		Convey("", func() {
 			So(ctg, ShouldNotBeNil)
+			So(len(ctg.Categories), ShouldBeGreaterThanOrEqualTo, 1)
+			So(ctg.Categories[0].ID, ShouldBeLessThanOrEqualTo, 125)
+			So(ctg.Categories[0].Name, ShouldContainSubstring, "Trade Balance")
+			So(ctg.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 13)
+
 		})
 	})
 
@@ -27,6 +32,10 @@ func TestGetCategory(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(ctg, ShouldNotBeNil)
+			So(len(ctg.Categories), ShouldBeGreaterThanOrEqualTo, 1)
+			So(ctg.Categories[0].ID, ShouldBeLessThanOrEqualTo, 125)
+			So(ctg.Categories[0].Name, ShouldContainSubstring, "Trade Balance")
+			So(ctg.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 13)
 		})
 	})
 
@@ -44,6 +53,10 @@ func TestGetCategoryChildren(t *testing.T) {
 
 		Convey("", func() {
 			So(ctgs, ShouldNotBeNil)
+			So(len(ctgs.Categories), ShouldBeGreaterThanOrEqualTo, 5)
+			So(ctgs.Categories[0].ID, ShouldBeLessThanOrEqualTo, 16)
+			So(ctgs.Categories[0].Name, ShouldContainSubstring, "Exports")
+			So(ctgs.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 13)
 		})
 	})
 
@@ -53,6 +66,10 @@ func TestGetCategoryChildren(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(ctgs, ShouldNotBeNil)
+			So(len(ctgs.Categories), ShouldBeGreaterThanOrEqualTo, 5)
+			So(ctgs.Categories[0].ID, ShouldBeLessThanOrEqualTo, 16)
+			So(ctgs.Categories[0].Name, ShouldContainSubstring, "Exports")
+			So(ctgs.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 13)
 		})
 	})
 
@@ -70,6 +87,10 @@ func TestGetRelatedCategory(t *testing.T) {
 
 		Convey("", func() {
 			So(ctg, ShouldNotBeNil)
+			So(len(ctg.Categories), ShouldBeGreaterThanOrEqualTo, 7)
+			So(ctg.Categories[0].ID, ShouldBeLessThanOrEqualTo, 149)
+			So(ctg.Categories[0].Name, ShouldContainSubstring, "Arkansas")
+			So(ctg.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 27281)
 		})
 	})
 
@@ -79,6 +100,10 @@ func TestGetRelatedCategory(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(ctg, ShouldNotBeNil)
+			So(len(ctg.Categories), ShouldBeGreaterThanOrEqualTo, 7)
+			So(ctg.Categories[0].ID, ShouldBeLessThanOrEqualTo, 149)
+			So(ctg.Categories[0].Name, ShouldContainSubstring, "Arkansas")
+			So(ctg.Categories[0].ParentID, ShouldBeLessThanOrEqualTo, 27281)
 		})
 	})
 
@@ -96,6 +121,9 @@ func TestGetCategorySeries(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 24)
+			So(srs.Seriess[0].ID, ShouldBeLessThanOrEqualTo, "BOPBCA")
+			So(srs.Seriess[0].Title, ShouldContainSubstring, "Balance on Current Account")
 		})
 	})
 
@@ -105,6 +133,9 @@ func TestGetCategorySeries(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 24)
+			So(srs.Seriess[0].ID, ShouldBeLessThanOrEqualTo, "BOPBCA")
+			So(srs.Seriess[0].Title, ShouldContainSubstring, "Balance on Current Account")
 		})
 	})
 
@@ -122,6 +153,10 @@ func TestGetCategoryTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 27)
+			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "bea")
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "src")
 		})
 	})
 
@@ -131,6 +166,9 @@ func TestGetCategoryTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 27)
+			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "bea")
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "src")
 		})
 	})
 
@@ -149,6 +187,9 @@ func TestGetCategoryRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 7)
+			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "balance")
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
 		})
 	})
 
@@ -158,6 +199,9 @@ func TestGetCategoryRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 7)
+			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "balance")
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
 		})
 	})
 
