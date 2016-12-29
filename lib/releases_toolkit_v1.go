@@ -10,8 +10,8 @@ type Release struct {
 }
 
 type ReleaseDate struct {
-	ID   int    `json:"id" xml:"id,attr"`
-	Name string `json:"name" xml:"name,attr"`
+	ID   int    `json:"release_id" xml:"release_id,attr"`
+	Name string `json:"release_name" xml:"release_name,attr"`
 	Date string `json:"date" xml:"date,attr"`
 }
 

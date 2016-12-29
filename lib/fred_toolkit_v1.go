@@ -241,7 +241,7 @@ func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramT
 		}
 		url += "&"
 	} else {
-		url += "/?"
+		url += "?"
 	}
 
 	fileType := ""

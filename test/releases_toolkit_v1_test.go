@@ -16,7 +16,9 @@ func TestGetReleases(t *testing.T) {
 
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
-			//So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 40)
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 158)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "Advance Monthly Sales for Retail and Food Services")
+
 		})
 	})
 
@@ -26,8 +28,8 @@ func TestGetReleases(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
-			//So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
-
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 158)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "Advance Monthly Sales for Retail and Food Services")
 		})
 	})
 
@@ -43,8 +45,7 @@ func TestGetReleasesDates(t *testing.T) {
 
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
-			//So(len(dts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 40)
-
+			So(dts.ReleaseDates[0].Name, ShouldContainSubstring, "CBOE Market Statistics")
 		})
 	})
 
@@ -54,8 +55,7 @@ func TestGetReleasesDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
-			//So(len(dts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 40)
-
+			So(dts.ReleaseDates[0].Name, ShouldContainSubstring, "CBOE Market Statistics")
 		})
 	})
 
@@ -74,7 +74,8 @@ func TestGetRelease(t *testing.T) {
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
 			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
-
+			So(rls.Releases[0].ID, ShouldBeGreaterThanOrEqualTo, 53)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "Gross Domestic Product")
 		})
 	})
 
@@ -85,7 +86,8 @@ func TestGetRelease(t *testing.T) {
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
 			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
-
+			So(rls.Releases[0].ID, ShouldBeGreaterThanOrEqualTo, 53)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "Gross Domestic Product")
 		})
 	})
 
@@ -103,7 +105,7 @@ func TestGetReleaseDates(t *testing.T) {
 
 		Convey("", func() {
 			So(rlsDts, ShouldNotBeNil)
-			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 1)
+			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 17)
 
 		})
 	})
@@ -114,7 +116,7 @@ func TestGetReleaseDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rlsDts, ShouldNotBeNil)
-			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 1)
+			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 17)
 
 		})
 	})
@@ -133,7 +135,9 @@ func TestGetReleaseSeries(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 1)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 39)
+			So(srs.Seriess[0].ID, ShouldBeGreaterThanOrEqualTo, "BOMTVLM133S")
+			So(srs.Seriess[0].Title, ShouldBeGreaterThanOrEqualTo, "U.S. Imports of Services - Travel")
 
 		})
 	})
@@ -144,8 +148,9 @@ func TestGetReleaseSeries(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 1)
-
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 39)
+			So(srs.Seriess[0].ID, ShouldBeGreaterThanOrEqualTo, "BOMTVLM133S")
+			So(srs.Seriess[0].Title, ShouldBeGreaterThanOrEqualTo, "U.S. Imports of Services - Travel")
 		})
 	})
 
@@ -163,7 +168,9 @@ func TestGetReleaseSources(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 1)
+			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 2)
+			So(srs.Sources[0].ID, ShouldBeGreaterThanOrEqualTo, 18)
+			So(srs.Sources[0].Name, ShouldContainSubstring, "U.S. Bureau of Economic Analysis")
 
 		})
 	})
@@ -174,8 +181,9 @@ func TestGetReleaseSources(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 1)
-
+			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 2)
+			So(srs.Sources[0].ID, ShouldBeGreaterThanOrEqualTo, 18)
+			So(srs.Sources[0].Name, ShouldContainSubstring, "U.S. Bureau of Economic Analysis")
 		})
 	})
 
@@ -193,7 +201,8 @@ func TestGetReleaseTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "commercial")
 		})
 	})
 
@@ -203,7 +212,8 @@ func TestGetReleaseTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "commercial")
 		})
 	})
 
@@ -222,7 +232,8 @@ func TestGetReleaseRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "commercial")
 		})
 	})
 
@@ -232,7 +243,8 @@ func TestGetReleaseRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "commercial")
 		})
 	})
 
