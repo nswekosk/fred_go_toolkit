@@ -27,11 +27,11 @@ type FredType struct {
 	Offset       int           `json:"offset" xml:"offset"`
 	Limit        int           `json:"limit" xml:"limit"`
 	Categories   []Category    `json:"categories" xml:"category"`
-	Release      []Release     `json:"releases" xml:"release"`
+	Releases     []Release     `json:"releases" xml:"release"`
 	Seriess      []Series      `json:"seriess" xml:"series"`
 	Observations []Observation `json:"observations" xml:"observation"`
 	VintageDates []string      `json:"vintage_dates" xml:"vintage_date"`
-	Tags         []Tag         `json:"tag" xml:"tag"`
+	Tags         []Tag         `json:"tags" xml:"tag"`
 	Sources      []Source      `json:"sources" xml:"source"`
 	ReleaseDates []ReleaseDate `json:"release_dates" xml:"release_date"`
 }
@@ -210,11 +210,12 @@ func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramT
 	if len(params) != 0 {
 		for paramKey, paramVal := range params {
 			if !sameStr(paramKey, "") || !sameStr(paramVal.(string), "") {
-				paramOp := "&"
 				for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
+					paramOp := "&"
 					if sameStr(paramKey, param) {
 						if firstParam {
 							paramOp = "?"
+							firstParam = false
 						}
 
 						val := ""

@@ -154,8 +154,8 @@ func TestGetCategoryTags(t *testing.T) {
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
 
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 27)
-			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "bea")
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, tags.Count)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "bea")
 			So(tags.Tags[0].GroupID, ShouldContainSubstring, "src")
 		})
 	})
@@ -166,8 +166,8 @@ func TestGetCategoryTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 27)
-			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "bea")
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, tags.Count)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "bea")
 			So(tags.Tags[0].GroupID, ShouldContainSubstring, "src")
 		})
 	})
@@ -187,8 +187,8 @@ func TestGetCategoryRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 7)
-			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "balance")
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, tags.Count)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "balance")
 			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
 		})
 	})
@@ -199,8 +199,8 @@ func TestGetCategoryRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
-			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 7)
-			So(tags.Tags[0].Name, ShouldBeLessThanOrEqualTo, "balance")
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, tags.Count)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "balance")
 			So(tags.Tags[0].GroupID, ShouldContainSubstring, "gen")
 		})
 	})

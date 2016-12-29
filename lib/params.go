@@ -27,7 +27,7 @@ var paramsLookup = map[string]map[string]interface{}{
 		paramLookupParams: []string{"category_id", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order", "tag_names", "tag_group_id", "search_text"},
 	},
 	categoryRelatedTags: {
-		paramLookupExt:    "/category/tags",
+		paramLookupExt:    "/category/related_tags",
 		paramLookupParams: []string{"category_id", "realtime_start", "realtime_end", "limit", "offset", "order_by", "sort_order", "tag_names", "exclude_tag_names", "tag_group_id", "search_text"},
 	},
 

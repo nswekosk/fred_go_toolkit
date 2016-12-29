@@ -16,6 +16,7 @@ func TestGetReleases(t *testing.T) {
 
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			//So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 40)
 		})
 	})
 
@@ -25,6 +26,8 @@ func TestGetReleases(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			//So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -40,6 +43,8 @@ func TestGetReleasesDates(t *testing.T) {
 
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
+			//So(len(dts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 40)
+
 		})
 	})
 
@@ -49,6 +54,8 @@ func TestGetReleasesDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
+			//So(len(dts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 40)
+
 		})
 	})
 
@@ -66,6 +73,8 @@ func TestGetRelease(t *testing.T) {
 
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -75,6 +84,8 @@ func TestGetRelease(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -92,6 +103,8 @@ func TestGetReleaseDates(t *testing.T) {
 
 		Convey("", func() {
 			So(rlsDts, ShouldNotBeNil)
+			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -101,6 +114,8 @@ func TestGetReleaseDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rlsDts, ShouldNotBeNil)
+			So(len(rlsDts.ReleaseDates), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -118,6 +133,8 @@ func TestGetReleaseSeries(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -127,6 +144,8 @@ func TestGetReleaseSeries(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -144,6 +163,8 @@ func TestGetReleaseSources(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -153,6 +174,8 @@ func TestGetReleaseSources(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Sources), ShouldBeGreaterThanOrEqualTo, 1)
+
 		})
 	})
 
@@ -170,6 +193,7 @@ func TestGetReleaseTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
 		})
 	})
 
@@ -179,6 +203,7 @@ func TestGetReleaseTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
 		})
 	})
 
@@ -197,6 +222,7 @@ func TestGetReleaseRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
 		})
 	})
 
@@ -206,6 +232,7 @@ func TestGetReleaseRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 1)
 		})
 	})
 
