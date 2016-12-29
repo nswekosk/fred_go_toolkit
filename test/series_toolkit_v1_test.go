@@ -18,6 +18,9 @@ func TestGetSeries(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(srs.Seriess[0].ID, ShouldBeGreaterThanOrEqualTo, "GNPCA")
+			So(srs.Seriess[0].Title, ShouldBeGreaterThanOrEqualTo, "Real Gross National Product")
+
 		})
 	})
 
@@ -27,6 +30,8 @@ func TestGetSeries(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(srs.Seriess[0].ID, ShouldBeGreaterThanOrEqualTo, "GNPCA")
+			So(srs.Seriess[0].Title, ShouldBeGreaterThanOrEqualTo, "Real Gross National Product")
 		})
 	})
 
@@ -44,6 +49,9 @@ func TestGetSeriesCategories(t *testing.T) {
 
 		Convey("", func() {
 			So(srsCts, ShouldNotBeNil)
+			So(len(srsCts.Categories), ShouldBeGreaterThanOrEqualTo, 2)
+			So(srsCts.Categories[0].ID, ShouldBeGreaterThanOrEqualTo, 95)
+			So(srsCts.Categories[0].Name, ShouldContainSubstring, "Monthly Rates")
 		})
 	})
 
@@ -53,6 +61,9 @@ func TestGetSeriesCategories(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srsCts, ShouldNotBeNil)
+			So(len(srsCts.Categories), ShouldBeGreaterThanOrEqualTo, 2)
+			So(srsCts.Categories[0].ID, ShouldBeGreaterThanOrEqualTo, 95)
+			So(srsCts.Categories[0].Name, ShouldContainSubstring, "Monthly Rates")
 		})
 	})
 
@@ -70,6 +81,8 @@ func TestGetSeriesObservations(t *testing.T) {
 
 		Convey("", func() {
 			So(srsObs, ShouldNotBeNil)
+			So(len(srsObs.Observations), ShouldBeGreaterThanOrEqualTo, 84)
+
 		})
 	})
 
@@ -79,6 +92,8 @@ func TestGetSeriesObservations(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srsObs, ShouldNotBeNil)
+			So(len(srsObs.Observations), ShouldBeGreaterThanOrEqualTo, 84)
+
 		})
 	})
 
@@ -96,6 +111,10 @@ func TestGetSeriesRelease(t *testing.T) {
 
 		Convey("", func() {
 			So(srsRls, ShouldNotBeNil)
+			So(len(srsRls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
+			So(srsRls.Releases[0].Name, ShouldContainSubstring, "H.6 Money Stock Measures")
+			So(srsRls.Releases[0].ID, ShouldBeGreaterThanOrEqualTo, 21)
+
 		})
 	})
 
@@ -105,6 +124,9 @@ func TestGetSeriesRelease(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srsRls, ShouldNotBeNil)
+			So(len(srsRls.Releases), ShouldBeGreaterThanOrEqualTo, 1)
+			So(srsRls.Releases[0].Name, ShouldContainSubstring, "H.6 Money Stock Measures")
+			So(srsRls.Releases[0].ID, ShouldBeGreaterThanOrEqualTo, 21)
 		})
 	})
 
@@ -122,6 +144,9 @@ func TestGetSeriesSearch(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 25)
+			So(srs.Seriess[0].ID, ShouldContainSubstring, "MSIM2")
+			So(srs.Seriess[0].Title, ShouldContainSubstring, "Monetary Services Index: M2 (preferred)")
 		})
 	})
 
@@ -131,6 +156,9 @@ func TestGetSeriesSearch(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(len(srs.Seriess), ShouldBeGreaterThanOrEqualTo, 25)
+			So(srs.Seriess[0].ID, ShouldContainSubstring, "MSIM2")
+			So(srs.Seriess[0].Title, ShouldContainSubstring, "Monetary Services Index: M2 (preferred)")
 		})
 	})
 
@@ -148,6 +176,8 @@ func TestGetSeriesSearchTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 18)
+
 		})
 	})
 
@@ -157,6 +187,8 @@ func TestGetSeriesSearchTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 18)
+
 		})
 	})
 
@@ -175,6 +207,8 @@ func TestGetSeriesSearchRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 10)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "conventional")
 		})
 	})
 
@@ -184,6 +218,8 @@ func TestGetSeriesSearchRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 10)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "conventional")
 		})
 	})
 
@@ -201,6 +237,9 @@ func TestGetSeriesTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 8)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "nsa")
+
 		})
 	})
 
@@ -210,6 +249,9 @@ func TestGetSeriesTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 8)
+			So(tags.Tags[0].Name, ShouldContainSubstring, "nsa")
+
 		})
 	})
 
@@ -225,6 +267,7 @@ func TestGetSeriesUpdates(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(srs.Seriess[0].ID, ShouldContainSubstring, "R2500GRPR")
 		})
 	})
 
@@ -234,6 +277,7 @@ func TestGetSeriesUpdates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
+			So(srs.Seriess[0].ID, ShouldContainSubstring, "R2500GRPR")
 		})
 	})
 
@@ -251,6 +295,8 @@ func TestGetSeriesVintageDates(t *testing.T) {
 
 		Convey("", func() {
 			So(vds, ShouldNotBeNil)
+			So(len(vds.VintageDates), ShouldBeGreaterThanOrEqualTo, 162)
+
 		})
 	})
 
@@ -260,6 +306,8 @@ func TestGetSeriesVintageDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(vds, ShouldNotBeNil)
+			So(len(vds.VintageDates), ShouldBeGreaterThanOrEqualTo, 162)
+
 		})
 	})
 
