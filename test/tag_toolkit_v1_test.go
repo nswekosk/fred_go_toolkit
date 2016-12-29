@@ -16,6 +16,7 @@ func TestGetTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 100)
 		})
 	})
 
@@ -25,6 +26,8 @@ func TestGetTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 100)
+
 		})
 	})
 }
@@ -41,6 +44,10 @@ func TestGetRelatedTags(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 13)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "geot")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "nation")
+
 		})
 	})
 
@@ -50,6 +57,9 @@ func TestGetRelatedTags(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Tags), ShouldBeGreaterThanOrEqualTo, 13)
+			So(tags.Tags[0].GroupID, ShouldContainSubstring, "geot")
+			So(tags.Tags[0].Name, ShouldContainSubstring, "nation")
 		})
 	})
 }
@@ -66,6 +76,8 @@ func TestGetTagSeries(t *testing.T) {
 
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Seriess), ShouldBeGreaterThanOrEqualTo, 18)
+			So(tags.Seriess[0].ID, ShouldContainSubstring, "CPGDFD02SIA657N")
 		})
 	})
 
@@ -75,6 +87,8 @@ func TestGetTagSeries(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(tags, ShouldNotBeNil)
+			So(len(tags.Seriess), ShouldBeGreaterThanOrEqualTo, 18)
+			So(tags.Seriess[0].ID, ShouldContainSubstring, "CPGDFD02SIA657N")
 		})
 	})
 
