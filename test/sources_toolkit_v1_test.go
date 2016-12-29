@@ -16,6 +16,8 @@ func TestGetSources(t *testing.T) {
 
 		Convey("", func() {
 			So(srcs, ShouldNotBeNil)
+			So(len(srcs.Sources), ShouldBeGreaterThanOrEqualTo, 58)
+			So(srcs.Sources[0].Name, ShouldContainSubstring, "Board of Governors of the Federal Reserve System")
 		})
 	})
 
@@ -25,6 +27,8 @@ func TestGetSources(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srcs, ShouldNotBeNil)
+			So(len(srcs.Sources), ShouldBeGreaterThanOrEqualTo, 58)
+			So(srcs.Sources[0].Name, ShouldContainSubstring, "Board of Governors of the Federal Reserve System")
 		})
 	})
 
@@ -42,6 +46,9 @@ func TestGetSource(t *testing.T) {
 
 		Convey("", func() {
 			So(src, ShouldNotBeNil)
+			So(len(src.Sources), ShouldBeGreaterThanOrEqualTo, 1)
+			So(src.Sources[0].Name, ShouldContainSubstring, "Board of Governors of the Federal Reserve System")
+
 		})
 	})
 
@@ -51,6 +58,9 @@ func TestGetSource(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(src, ShouldNotBeNil)
+			So(len(src.Sources), ShouldBeGreaterThanOrEqualTo, 1)
+			So(src.Sources[0].Name, ShouldContainSubstring, "Board of Governors of the Federal Reserve System")
+
 		})
 	})
 
@@ -68,6 +78,9 @@ func TestGetSourceReleases(t *testing.T) {
 
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 26)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "G.17 Industrial Production and Capacity Utilization")
+
 		})
 	})
 
@@ -77,6 +90,9 @@ func TestGetSourceReleases(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(rls, ShouldNotBeNil)
+			So(len(rls.Releases), ShouldBeGreaterThanOrEqualTo, 26)
+			So(rls.Releases[0].Name, ShouldContainSubstring, "G.17 Industrial Production and Capacity Utilization")
+
 		})
 	})
 
