@@ -1,5 +1,10 @@
 package lib
 
+import (
+	"errors"
+	"io/ioutil"
+)
+
 type Release struct {
 	ID           int    `json:"id" xml:"id,attr"`
 	Start        string `json:"realtime_start" xml:"realtime_start,attr"`
@@ -171,29 +176,26 @@ func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Fred
  ** Get the related tags for a
  ** category.
  ********************************/
-/*
-func (f *FredClient) GetReleaseTables(params map[string]interface{}) (*Tags, error) {
+
+func (f *FredClient) GetReleaseTables(params map[string]interface{}) (string, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
-		return nil, err
+		return "", err
 
 	}
-
-	tags := &Tags{}
 
 	resp, err := f.callAPI(params, "RELEASE_TABLES")
 
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(tags)
-
+	res, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return nil, errors.New(errorLibraryFail)
+		f.log("[GetReleaseTables] READ ERROR: " + err.Error())
+		return "", errors.New(errorLibraryFail)
 	}
 
-	return tags, nil
+	return string(res), nil
 
 }
-*/

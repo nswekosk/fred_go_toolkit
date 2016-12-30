@@ -267,7 +267,6 @@ func TestGetSeriesUpdates(t *testing.T) {
 
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(srs.Seriess[0].ID, ShouldContainSubstring, "R2500GRPR")
 		})
 	})
 
@@ -277,7 +276,6 @@ func TestGetSeriesUpdates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(srs, ShouldNotBeNil)
-			So(srs.Seriess[0].ID, ShouldContainSubstring, "R2500GRPR")
 		})
 	})
 

@@ -249,3 +249,30 @@ func TestGetReleaseRelatedTags(t *testing.T) {
 	})
 
 }
+
+func TestGetReleaseTables(t *testing.T) {
+
+	params := make(map[string]interface{})
+
+	params["release_id"] = 53
+	params["element_id"] = 12886
+
+	Convey("", t, func() {
+		res, err := xmlFredClient.GetReleaseTables(params)
+		So(err, ShouldBeNil)
+
+		Convey("", func() {
+			So(res, ShouldNotBeBlank)
+		})
+	})
+
+	Convey("", t, func() {
+		res, err := jsonFredClient.GetReleaseTables(params)
+
+		So(err, ShouldBeNil)
+		Convey("", func() {
+			So(res, ShouldNotBeBlank)
+		})
+	})
+
+}
