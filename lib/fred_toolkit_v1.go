@@ -41,6 +41,13 @@ type FredClient struct {
 	fileType   string
 	requestURL string
 	logFile    *os.File
+	hasLogs    bool
+}
+
+type FredConfig struct {
+	APIKey   string
+	FileType string
+	LogFile  string
 }
 
 /********************************
@@ -49,30 +56,52 @@ type FredClient struct {
  ** Creates an instance of a
  ** FRED client.
  ********************************/
-func CreateFredClient(APIKey string, FileType ...string) (*FredClient, error) {
+func CreateFredClient(config FredConfig) (*FredClient, error) {
 
-	if sameStr(APIKey, "") {
-		return nil, errors.New(errorNoAPIKey)
-	}
-
-	f, err := os.OpenFile("fred.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		fmt.Println("Error opening log file: %v", err.Error())
+	if err := validateConfig(&config); err != nil {
 		return nil, err
 	}
-	log.SetOutput(f)
 
-	fileType := ""
-	if len(FileType) != 0 {
-		fileType = FileType[0]
+	var f os.File
+	var hasLogs bool
+
+	if config.LogFile != "" {
+		f, err := os.OpenFile(config.LogFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+		if err != nil {
+			fmt.Println("Error opening log file: %v", err.Error())
+			return nil, err
+		}
+		log.SetOutput(f)
+		hasLogs = true
 	}
 
 	return &FredClient{
-		aPIKEY:     APIKey,
-		fileType:   fileType,
+		aPIKEY:     config.APIKey,
+		fileType:   config.FileType,
 		requestURL: apiURL,
-		logFile:    f,
+		hasLogs:    hasLogs,
+		logFile:    &f,
 	}, nil
+}
+
+/********************************
+ ** validateConfig
+ **
+ ** Validates the input for the
+ ** incoming config.
+ ********************************/
+func validateConfig(config *FredConfig) error {
+
+	if sameStr(config.APIKey, "") {
+		return errors.New(errorNoAPIKey)
+	}
+
+	if config.FileType != "" && config.FileType != FileTypeXML && config.FileType != FileTypeJSON {
+		return errors.New(errorIncorrectFileType)
+	}
+
+	return nil
+
 }
 
 /********************************
@@ -262,10 +291,14 @@ func sameStr(str1 string, str2 string) bool {
 }
 
 func (f *FredClient) log(logMes string) {
-	log.Println(logMes)
+	if f.hasLogs {
+		log.Println(logMes)
+	}
 }
 
 func (f *FredClient) logError(method string, err error) {
-	log.Fatalf("METHOD: %v ERROR: %v", method, err.Error())
-	f.logFile.Close()
+	if f.hasLogs {
+		log.Fatalf("METHOD: %v ERROR: %v", method, err.Error())
+		f.logFile.Close()
+	}
 }

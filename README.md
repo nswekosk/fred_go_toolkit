@@ -14,9 +14,15 @@ Sign up for a Fred API key: [http://api.stlouisfed.org/api_key.html](http://api.
 
 ## Usage Example
 
-client := CreateFredClient(apiKey, FileTypeJSON)  
+fredConfig := FredConfig{
+    APIKey: 'api-key',
+    FileType: FileTypeJSON,     
+    LogFile: "log.log",
+}
 
-    File types are optional. You can use local constants 'FileTypeJSON' ('json')     
+client := CreateFredClient(fredConfig)  
+
+    File types and log files are optional. You can use local constants 'FileTypeJSON' ('json')     
     or 'FileTypeXML' ('xml'). If no file type is specified, the default type is XML. 
 
 params := make(map[string]interface{})

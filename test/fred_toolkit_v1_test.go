@@ -18,15 +18,23 @@ func TestMain(m *testing.M) {
 
 	apiKey = os.Getenv("FRED_API_KEY")
 
+	fredConfig := FredConfig{
+		APIKey:   apiKey,
+		FileType: FileTypeXML,
+		LogFile:  "",
+	}
+
 	var err error
 
-	xmlFredClient, err = CreateFredClient(apiKey, FileTypeXML)
+	xmlFredClient, err = CreateFredClient(fredConfig)
 
 	if err != nil {
 		panic(err.Error())
 	}
 
-	jsonFredClient, err = CreateFredClient(apiKey, FileTypeJSON)
+	fredConfig.FileType = FileTypeJSON
+
+	jsonFredClient, err = CreateFredClient(fredConfig)
 	if err != nil {
 		panic(err.Error())
 	}
