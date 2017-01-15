@@ -11,6 +11,8 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+
+	. "github.com/nswekosk/fred_client/assets"
 )
 
 // FredType represents the response object for all responses from the FRED api.
@@ -80,7 +82,7 @@ func CreateFredClient(config FredConfig) (*FredClient, error) {
 	return &FredClient{
 		aPIKEY:     config.APIKey,
 		fileType:   config.FileType,
-		requestURL: apiURL,
+		requestURL: ApiURL,
 		hasLogs:    hasLogs,
 		logFile:    &f,
 	}, nil
@@ -89,11 +91,11 @@ func CreateFredClient(config FredConfig) (*FredClient, error) {
 func validateConfig(config *FredConfig) error {
 
 	if sameStr(config.APIKey, "") {
-		return errors.New(errorNoAPIKey)
+		return errors.New(ErrorNoAPIKey)
 	}
 
 	if config.FileType != "" && config.FileType != FileTypeXML && config.FileType != FileTypeJSON {
-		return errors.New(errorIncorrectFileType)
+		return errors.New(ErrorIncorrectFileType)
 	}
 
 	return nil
@@ -104,8 +106,8 @@ func validateConfig(config *FredConfig) error {
 func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 
 	if APIKey == "" || len(APIKey) != 32 {
-		f.log(errorInvalidAPIKey)
-		return errors.New(errorInvalidAPIKey)
+		f.log(ErrorInvalidAPIKey)
+		return errors.New(ErrorInvalidAPIKey)
 	}
 
 	f.aPIKEY = APIKey
@@ -121,7 +123,7 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 
 func (f *FredClient) validateAPIKEY() error {
 	if sameStr(f.aPIKEY, "") {
-		return errors.New(errorNoAPIKey)
+		return errors.New(ErrorNoAPIKey)
 	}
 	return nil
 }
@@ -136,7 +138,7 @@ func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*
 
 	if err != nil {
 		f.log("[callAPI] Error with HTTP Call: " + err.Error())
-		return nil, errors.New(errorLibraryFail)
+		return nil, errors.New(ErrorLibraryFail)
 	}
 
 	return resp, nil
@@ -153,21 +155,21 @@ func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, e
 
 		if err != nil {
 			f.log("[decodeObj] JSON ERROR: " + err.Error())
-			return nil, errors.New(errorLibraryFail)
+			return nil, errors.New(ErrorLibraryFail)
 		}
 	case FileTypeXML:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
 			f.log("[decodeObj] XML ERROR: " + err.Error())
-			return nil, errors.New(errorLibraryFail)
+			return nil, errors.New(ErrorLibraryFail)
 		}
 	default:
 		err = xml.NewDecoder(resp.Body).Decode(obj)
 
 		if err != nil {
 			f.log("[decodeObj] DEFAULT ERROR: " + err.Error())
-			return nil, errors.New(errorLibraryFail)
+			return nil, errors.New(ErrorLibraryFail)
 		}
 
 	}
@@ -204,13 +206,13 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (*
 // formatUrl formats the url per the API specifications.
 func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramType string) string {
 
-	url += paramsLookup[paramType][paramLookupExt].(string)
+	url += ParamsLookup[paramType][ParamLookupExt].(string)
 	firstParam := true
 
 	if len(params) != 0 {
 		for paramKey, paramVal := range params {
 			if !sameStr(paramKey, "") || !sameStr(paramVal.(string), "") {
-				for _, param := range paramsLookup[paramType][paramLookupParams].([]string) {
+				for _, param := range ParamsLookup[paramType][ParamLookupParams].([]string) {
 					paramOp := "&"
 					if sameStr(paramKey, param) {
 						if firstParam {

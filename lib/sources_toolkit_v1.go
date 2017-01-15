@@ -1,5 +1,9 @@
 package lib
 
+import (
+	. "github.com/nswekosk/fred_client/assets"
+)
+
 // Source is a single instance of a FRED Source.
 type Source struct {
 	ID    int    `json:"id" xml:"id,attr"`
@@ -14,10 +18,10 @@ type Source struct {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/sources.html
 func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, sources)
+	fc, err := f.operate(params, SourcesParam)
 
 	if err != nil {
-		f.logError(sources, err)
+		f.logError(SourcesParam, err)
 		return nil, err
 	}
 
@@ -30,10 +34,10 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/source.html
 func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, source)
+	fc, err := f.operate(params, SourceParam)
 
 	if err != nil {
-		f.logError(source, err)
+		f.logError(SourceParam, err)
 		return nil, err
 	}
 
@@ -46,10 +50,10 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error)
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/source_releases.html
 func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, sourceReleases)
+	fc, err := f.operate(params, SourceReleasesParam)
 
 	if err != nil {
-		f.logError(sourceReleases, err)
+		f.logError(SourceReleasesParam, err)
 		return nil, err
 	}
 

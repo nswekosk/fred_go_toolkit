@@ -39,13 +39,15 @@ func TestGetReleasesDates(t *testing.T) {
 
 	params := make(map[string]interface{})
 
+	params["release_id"] = 82
+
 	Convey("", t, func() {
 		dts, err := xmlFredClient.GetReleasesDates(params)
 		So(err, ShouldBeNil)
 
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
-			So(dts.ReleaseDates[0].Name, ShouldContainSubstring, "CBOE Market Statistics")
+			So(dts.ReleaseDates[0].Date, ShouldContainSubstring, "1997-02-10")
 		})
 	})
 
@@ -55,7 +57,7 @@ func TestGetReleasesDates(t *testing.T) {
 		So(err, ShouldBeNil)
 		Convey("", func() {
 			So(dts, ShouldNotBeNil)
-			So(dts.ReleaseDates[0].Name, ShouldContainSubstring, "CBOE Market Statistics")
+			So(dts.ReleaseDates[0].Date, ShouldContainSubstring, "1997-02-10")
 		})
 	})
 

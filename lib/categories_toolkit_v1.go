@@ -1,5 +1,9 @@
 package lib
 
+import (
+	. "github.com/nswekosk/fred_client/assets"
+)
+
 // Categories represents a collection of FRED categories.
 type Categories struct {
 	CategoryCol []Category `json:"categories"`
@@ -17,10 +21,10 @@ type Category struct {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category.html
 func (f *FredClient) GetCategory(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, category)
+	fc, err := f.operate(params, CategoryParam)
 
 	if err != nil {
-		f.logError(category, err)
+		f.logError(CategoryParam, err)
 		return nil, err
 	}
 
@@ -33,10 +37,10 @@ func (f *FredClient) GetCategory(params map[string]interface{}) (*FredType, erro
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category_children.html
 func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, categoryChildren)
+	fc, err := f.operate(params, CategoryChildrenParam)
 
 	if err != nil {
-		f.logError(categoryChildren, err)
+		f.logError(CategoryChildrenParam, err)
 		return nil, err
 	}
 
@@ -51,10 +55,10 @@ func (f *FredClient) GetCategoryChildren(params map[string]interface{}) (*FredTy
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category_related.html
 func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, categoryRelated)
+	fc, err := f.operate(params, CategoryRelatedParam)
 
 	if err != nil {
-		f.logError(categoryRelated, err)
+		f.logError(CategoryRelatedParam, err)
 		return nil, err
 	}
 
@@ -67,10 +71,10 @@ func (f *FredClient) GetRelatedCategory(params map[string]interface{}) (*FredTyp
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category_series.html
 func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, categorySeries)
+	fc, err := f.operate(params, CategorySeriesParam)
 
 	if err != nil {
-		f.logError(categorySeries, err)
+		f.logError(CategorySeriesParam, err)
 		return nil, err
 	}
 
@@ -88,10 +92,10 @@ func (f *FredClient) GetCategorySeries(params map[string]interface{}) (*FredType
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category_tags.html
 func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, categoryTags)
+	fc, err := f.operate(params, CategoryTagsParam)
 
 	if err != nil {
-		f.logError(categoryTags, err)
+		f.logError(CategoryTagsParam, err)
 		return nil, err
 	}
 
@@ -113,10 +117,10 @@ func (f *FredClient) GetCategoryTags(params map[string]interface{}) (*FredType, 
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/category_related_tags.html
 func (f *FredClient) GetCategoryRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, categoryRelatedTags)
+	fc, err := f.operate(params, CategoryRelatedTagsParam)
 
 	if err != nil {
-		f.logError(categoryRelatedTags, err)
+		f.logError(CategoryRelatedTagsParam, err)
 		return nil, err
 	}
 

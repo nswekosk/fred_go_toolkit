@@ -1,5 +1,9 @@
 package lib
 
+import (
+	. "github.com/nswekosk/fred_client/assets"
+)
+
 // Series is a single instance of a FRED series.
 type Series struct {
 	ID                     string `json:"id" xml:"id,attr"`
@@ -32,10 +36,10 @@ type Observation struct {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series.html
 func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, series)
+	fc, err := f.operate(params, SeriesParam)
 
 	if err != nil {
-		f.logError(series, err)
+		f.logError(SeriesParam, err)
 		return nil, err
 	}
 
@@ -48,10 +52,10 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error)
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_categories.html
 func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesCategories)
+	fc, err := f.operate(params, SeriesCategoriesParam)
 
 	if err != nil {
-		f.logError(seriesCategories, err)
+		f.logError(SeriesCategoriesParam, err)
 		return nil, err
 	}
 
@@ -64,10 +68,10 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredTy
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_observations.html
 func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesObservations)
+	fc, err := f.operate(params, SeriesObservationsParam)
 
 	if err != nil {
-		f.logError(seriesObservations, err)
+		f.logError(SeriesObservationsParam, err)
 		return nil, err
 	}
 
@@ -80,10 +84,10 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Fred
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_release.html
 func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesRelease)
+	fc, err := f.operate(params, SeriesReleaseParam)
 
 	if err != nil {
-		f.logError(seriesRelease, err)
+		f.logError(SeriesReleaseParam, err)
 		return nil, err
 	}
 
@@ -96,10 +100,10 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType,
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search.html
 func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesSearch)
+	fc, err := f.operate(params, SeriesSearchParam)
 
 	if err != nil {
-		f.logError(seriesSearch, err)
+		f.logError(SeriesSearchParam, err)
 		return nil, err
 	}
 
@@ -114,10 +118,10 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, 
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search_tags.html
 func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesSearchTags)
+	fc, err := f.operate(params, SeriesSearchTagsParam)
 
 	if err != nil {
-		f.logError(seriesSearchTags, err)
+		f.logError(SeriesSearchTagsParam, err)
 		return nil, err
 	}
 
@@ -135,10 +139,10 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredTy
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search_related_tags.html
 func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesSearchRelatedTags)
+	fc, err := f.operate(params, SeriesSearchRelatedTagsParam)
 
 	if err != nil {
-		f.logError(seriesSearchRelatedTags, err)
+		f.logError(SeriesSearchRelatedTagsParam, err)
 		return nil, err
 	}
 
@@ -151,10 +155,10 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_tags.html
 func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesTags)
+	fc, err := f.operate(params, SeriesTagsParam)
 
 	if err != nil {
-		f.logError(seriesTags, err)
+		f.logError(SeriesTagsParam, err)
 		return nil, err
 	}
 
@@ -168,10 +172,10 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, er
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_updates.html
 func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesUpdates)
+	fc, err := f.operate(params, SeriesUpdatesParam)
 
 	if err != nil {
-		f.logError(seriesUpdates, err)
+		f.logError(SeriesUpdatesParam, err)
 		return nil, err
 	}
 
@@ -184,10 +188,10 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType,
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_vintagedates.html
 func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, seriesVintagedates)
+	fc, err := f.operate(params, SeriesVintagedatesParam)
 
 	if err != nil {
-		f.logError(seriesVintagedates, err)
+		f.logError(SeriesVintagedatesParam, err)
 		return nil, err
 	}
 
