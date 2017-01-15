@@ -1,5 +1,6 @@
 package lib
 
+// Series is a single instance of a FRED series.
 type Series struct {
 	ID                     string `json:"id" xml:"id,attr"`
 	Start                  string `json:"realtime_start" xml:"realtime_start,attr"`
@@ -18,6 +19,7 @@ type Series struct {
 	Notes                  string `json:"notes" xml:"notes,attr"`
 }
 
+// Observation is a single instance of a FRED observation.
 type Observation struct {
 	Start string `json:"realtime_start" xml:"realtime_start,attr"`
 	End   string `json:"realtime_end" xml:"realtime_end,attr"`
@@ -25,11 +27,9 @@ type Observation struct {
 	Value string `json:"value" xml:"value,attr"`
 }
 
-/********************************
- ** GetSeries
- **
- ** Get an economic data series.
- ********************************/
+// GetSeries will get an economic data series.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series.html
 func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, series)
@@ -43,12 +43,9 @@ func (f *FredClient) GetSeries(params map[string]interface{}) (*FredType, error)
 
 }
 
-/********************************
- ** GetSeriesCategories
- **
- ** Get the categories for an
- ** economic data series.
- ********************************/
+// GetSeriesCategories will get the categories for an economic data series.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_categories.html
 func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesCategories)
@@ -62,13 +59,9 @@ func (f *FredClient) GetSeriesCategories(params map[string]interface{}) (*FredTy
 
 }
 
-/********************************
- ** GetReleaseObservations
- **
- ** Get the observations or data
- ** values for an economic data
- ** series.
- ********************************/
+// GetReleaseObservations will get the observations or data values for an economic data series.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_observations.html
 func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesObservations)
@@ -82,12 +75,9 @@ func (f *FredClient) GetSeriesObservations(params map[string]interface{}) (*Fred
 
 }
 
-/********************************
- ** GetSeriesRelease
- **
- ** Get the release for an economic
- ** data series.
- ********************************/
+// GetSeriesRelease will get the release for an economic data series.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_release.html
 func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesRelease)
@@ -101,12 +91,9 @@ func (f *FredClient) GetSeriesRelease(params map[string]interface{}) (*FredType,
 
 }
 
-/********************************
- ** GetSeriesSearch
- **
- ** Get economic data series that
- ** match keywords.
- ********************************/
+// GetSeriesSearch will get economic data series that match keywords.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search.html
 func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesSearch)
@@ -120,11 +107,11 @@ func (f *FredClient) GetSeriesSearch(params map[string]interface{}) (*FredType, 
 
 }
 
-/********************************
- ** GetSeriesSearchTags
- **
- ** Get the tags for a series search.
- ********************************/
+// GetSeriesSearchTags will get the FRED tags for a series search.
+// Optionally, filter results by tag name, tag group, or tag search.
+// See the related request GetSeriesSearchRelatedTags.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search_tags.html
 func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesSearchTags)
@@ -138,12 +125,14 @@ func (f *FredClient) GetSeriesSearchTags(params map[string]interface{}) (*FredTy
 
 }
 
-/********************************
- ** GetSeriesSearchRelatedTags
- **
- ** Get teh related tags for a
- ** series search.
- ********************************/
+// GetSeriesSearchRelatedTags will get teh related tags for a series search.
+// Optionally, filter results by tag group or tag search.
+//
+// FRED tags are attributes assigned to series.
+// For this request, related FRED tags are the tags assigned to series that match all tags in the tag_names parameter, no tags in the exclude_tag_names parameter, and the search words set by the series_search_text parameter.
+// See the related request GetSeriesSearchTags.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_search_related_tags.html
 func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesSearchRelatedTags)
@@ -157,12 +146,9 @@ func (f *FredClient) GetSeriesSearchRelatedTags(params map[string]interface{}) (
 
 }
 
-/********************************
- ** GetSeriesTags
- **
- ** Get the tags for an economic
- ** data series.
- ********************************/
+// GetSeriesTags will get the tags for an economic data series.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_tags.html
 func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesTags)
@@ -176,14 +162,10 @@ func (f *FredClient) GetSeriesTags(params map[string]interface{}) (*FredType, er
 
 }
 
-/********************************
- ** GetSeriesUpdates
- **
- ** Get the economic data series
- ** sorted by when observations
- ** were updated on the FRED
- ** server.
- ********************************/
+// GetSeriesUpdates will get economic data series sorted by when observations were updated on the FRED® server (attribute last_updated).
+// Results are limited to series updated within the last two weeks.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_updates.html
 func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesUpdates)
@@ -197,14 +179,9 @@ func (f *FredClient) GetSeriesUpdates(params map[string]interface{}) (*FredType,
 
 }
 
-/********************************
- ** GetSeriesVintageDates
- **
- ** Get the dates in history when
- ** series' data values were
- ** revised or new data values
- ** were released.
- ********************************/
+// GetSeriesVintageDates will get the dates in history when a series' data values were revised or new data values were released. Vintage dates are the release dates for a series excluding release dates when the data for the series did not change.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/series_vintagedates.html
 func (f *FredClient) GetSeriesVintageDates(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, seriesVintagedates)

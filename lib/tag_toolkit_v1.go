@@ -1,5 +1,6 @@
 package lib
 
+// Tag is a single instance of a FRED tag.
 type Tag struct {
 	Name        string `json:"name" xml:"name,attr"`
 	GroupID     string `json:"group_id" xml:"group_id,attr"`
@@ -9,12 +10,12 @@ type Tag struct {
 	SeriesCount int    `json:"series_count" xml:"series_count,attr"`
 }
 
-/********************************
- ** GetTags
- **
- ** Get all tags, search for tags,
- ** or get tags by name.
- ********************************/
+// GetTags will get FRED tags.
+// Optionally, filter results by tag name, tag group, or search.
+// FRED tags are attributes assigned to series.
+// See the related request GetRelatedTags.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/tags.html
 func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, tags)
@@ -28,12 +29,14 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 
 }
 
-/********************************
- ** GetRelatedTags
- **
- ** Get the related tags for one
- ** or more tags.
- ********************************/
+// GetRelatedTags will get the related FRED tags for one or more FRED tags.
+// Optionally, filter results by tag group or search.
+//
+// FRED tags are attributes assigned to series.
+// Related FRED tags are the tags assigned to series that match all tags in the tag_names parameter and no tags in the exclude_tag_names parameter.
+// See the related request GetTags.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/related_tags.html
 func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, relatedTags)
@@ -47,11 +50,9 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, e
 
 }
 
-/********************************
- ** GetTagSeries
- **
- ** Get the series matching tags.
- ********************************/
+// GetTagSeries will get the series matching all tags in the tag_names parameter and no tags in the exclude_tag_names parameter.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/tags_series.html
 func (f *FredClient) GetTagSeries(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, tagsSeries)

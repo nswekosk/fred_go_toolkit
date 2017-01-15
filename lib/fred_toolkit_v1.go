@@ -13,6 +13,7 @@ import (
 	"strings"
 )
 
+// FredType represents the response object for all responses from the FRED api.
 type FredType struct {
 	Start        string        `json:"realtime_start" xml:"realtime_start"`
 	End          string        `json:"realtime_end" xml:"realtime_end"`
@@ -36,6 +37,8 @@ type FredType struct {
 	ReleaseDates []ReleaseDate `json:"release_dates" xml:"release_date"`
 }
 
+// FredClient is the main instance to call the FRED API.
+// All methods are a member of an instance of the FredClient.
 type FredClient struct {
 	aPIKEY     string
 	fileType   string
@@ -44,18 +47,17 @@ type FredClient struct {
 	hasLogs    bool
 }
 
+// FredConfig contains the necessary configuration for using the FredClient.
+// Requests can return either XML or JSON by setting the FileType parameter to xml or json. Note that the default value of FileType is xml.
+// The FredClient will only log to a local log file at the moment. This log file is set using the LogFile variable.
+// An APIKey can be retrieved at the following link: https://research.stlouisfed.org/docs/api/api_key.html
 type FredConfig struct {
 	APIKey   string
 	FileType string
 	LogFile  string
 }
 
-/********************************
- ** CreateFredClient
- **
- ** Creates an instance of a
- ** FRED client.
- ********************************/
+// CreateFredClient creates an instance of a FRED client.
 func CreateFredClient(config FredConfig) (*FredClient, error) {
 
 	if err := validateConfig(&config); err != nil {
@@ -84,12 +86,6 @@ func CreateFredClient(config FredConfig) (*FredClient, error) {
 	}, nil
 }
 
-/********************************
- ** validateConfig
- **
- ** Validates the input for the
- ** incoming config.
- ********************************/
 func validateConfig(config *FredConfig) error {
 
 	if sameStr(config.APIKey, "") {
@@ -104,12 +100,7 @@ func validateConfig(config *FredConfig) error {
 
 }
 
-/********************************
- ** UpdateAPIKEY
- **
- ** Updates the API KEY for the
- ** client.
- ********************************/
+// UpdateAPIKEY updates the API KEY for the client.
 func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 
 	if APIKey == "" || len(APIKey) != 32 {
@@ -126,11 +117,8 @@ func (f *FredClient) UpdateAPIKEY(APIKey string) error {
 	return nil
 }
 
-/********************************
- ** validateAPIKEY
- **
- ** Validates that an APIKEY exists.
- ********************************/
+// validateAPIKEY validates that an APIKEY exists.
+
 func (f *FredClient) validateAPIKEY() error {
 	if sameStr(f.aPIKEY, "") {
 		return errors.New(errorNoAPIKey)
@@ -138,12 +126,8 @@ func (f *FredClient) validateAPIKEY() error {
 	return nil
 }
 
-/********************************
- ** callAPI
- **
- ** Creates the url and makes a
- ** GET request to the API.
- ********************************/
+// callAPI creates the url and makes a GET request to the API.
+
 func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*http.Response, error) {
 
 	url := f.formatUrl(f.requestURL, params, paramType)
@@ -158,12 +142,8 @@ func (f *FredClient) callAPI(params map[string]interface{}, paramType string) (*
 	return resp, nil
 }
 
-/********************************
- ** decodeObj
- **
- ** Decodes the object in the
- ** format specified by ther user.
- ********************************/
+// decodeObj decodes the object in the format specified by ther user.
+
 func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, error) {
 	var err error
 
@@ -196,12 +176,8 @@ func (f *FredClient) decodeObj(resp *http.Response, obj *FredType) (*FredType, e
 
 }
 
-/********************************
- ** operate
- **
- ** Runs the operation based
- ** parameter type.
- ********************************/
+// operate runs the operation based parameter type.
+
 func (f *FredClient) operate(params map[string]interface{}, paramType string) (*FredType, error) {
 	if err := f.validateAPIKEY(); err != nil {
 		return nil, err
@@ -225,12 +201,7 @@ func (f *FredClient) operate(params map[string]interface{}, paramType string) (*
 	return obj, nil
 }
 
-/********************************
- ** formatUrl
- **
- ** Formats the url per the API
- ** specifications.
- ********************************/
+// formatUrl formats the url per the API specifications.
 func (f *FredClient) formatUrl(url string, params map[string]interface{}, paramType string) string {
 
 	url += paramsLookup[paramType][paramLookupExt].(string)

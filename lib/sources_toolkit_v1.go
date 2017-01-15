@@ -1,5 +1,6 @@
 package lib
 
+// Source is a single instance of a FRED Source.
 type Source struct {
 	ID    int    `json:"id" xml:"id,attr"`
 	Start string `json:"realtime_start" xml:"realtime_start,attr"`
@@ -8,12 +9,9 @@ type Source struct {
 	Link  string `json:"link" xml:"link,attr"`
 }
 
-/********************************
- ** GetSources
- **
- ** Get all sources of economic
- ** data.
- ********************************/
+// GetSources will get all sources of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/sources.html
 func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, sources)
@@ -27,11 +25,9 @@ func (f *FredClient) GetSources(params map[string]interface{}) (*FredType, error
 
 }
 
-/********************************
- ** GetSource
- **
- ** Get a source of economic data.
- ********************************/
+// GetSource will get a source of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/source.html
 func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, source)
@@ -45,11 +41,9 @@ func (f *FredClient) GetSource(params map[string]interface{}) (*FredType, error)
 
 }
 
-/********************************
- ** GetSourceReleases
- **
- ** Get the releases for a source.
- ********************************/
+// GetSourceReleases will get the releases for a source.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/source_releases.html
 func (f *FredClient) GetSourceReleases(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, sourceReleases)

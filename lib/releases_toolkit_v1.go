@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 )
 
+// Release is a single instance of a release of FRED economic data.
 type Release struct {
 	ID           int    `json:"id" xml:"id,attr"`
 	Start        string `json:"realtime_start" xml:"realtime_start,attr"`
@@ -14,18 +15,16 @@ type Release struct {
 	Link         string `json:"link" xml:"link,attr"`
 }
 
+// ReleaseDate is a single instance of a release date of FRED economic data.
 type ReleaseDate struct {
 	ID   int    `json:"release_id" xml:"release_id,attr"`
 	Name string `json:"release_name" xml:"release_name,attr"`
 	Date string `json:"date" xml:"date,attr"`
 }
 
-/********************************
- ** GetReleases
- **
- ** Get all releases of economic
- ** data.
- ********************************/
+// GetReleases will get all releases of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/releases.html
 func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releases)
@@ -39,12 +38,10 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, erro
 
 }
 
-/********************************
- ** GetReleasesDates
- **
- ** Get release dates for all
- ** releases of economic data.
- ********************************/
+// GetReleasesDates will get release dates for all releases of economic data.
+// Note that release dates are published by data sources and do not necessarily represent when data will be available on the FRED or ALFRED websites.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/releases_dates.html
 func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releasesDates)
@@ -58,11 +55,9 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType,
 
 }
 
-/********************************
- ** GetRelease
- **
- ** Get a release of economic data.
- ********************************/
+// GetRelease will get a release of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release.html
 func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, release)
@@ -76,12 +71,10 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error
 
 }
 
-/********************************
- ** GetReleaseDates
- **
- ** Get release dates for a release
- ** of economic data.
- ********************************/
+// GetReleaseDates will get release dates for a release of economic data.
+// Note that release dates are published by data sources and do not necessarily represent when data will be available on the FRED or ALFRED websites.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_dates.html
 func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releaseDates)
@@ -95,12 +88,9 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, 
 
 }
 
-/********************************
- ** GetReleaseSeries
- **
- ** Get the series on a release of
- ** economic data.
- ********************************/
+// GetReleaseSeries will get the series on a release of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_series.html
 func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releaseSeries)
@@ -114,12 +104,9 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType,
 
 }
 
-/********************************
- ** GetReleaseSources
- **
- ** Get the sources for a Release
- ** of economic data.
- ********************************/
+// GetReleaseSources will get the sources for a Release of economic data.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_sources.html
 func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releaseSources)
@@ -133,11 +120,13 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType
 
 }
 
-/********************************
- ** GetReleaseTags
- **
- ** Get the tags for a release.
- ********************************/
+// GetReleaseTags will get the FRED tags for a release.
+// Optionally, filter results by tag name, tag group, or search.
+// Series are assigned tags and releases.
+// Indirectly through series, it is possible to get the tags for a release.
+// See the related request GetReleaseRelatedTags.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_tags.html
 func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releaseTags)
@@ -151,12 +140,17 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, e
 
 }
 
-/********************************
- ** GetReleaseRelatedTags
- **
- ** Get the related tags for a
- ** release.
- ********************************/
+// GetReleaseRelatedTags will get the related FRED tags for one or more FRED tags within a release.
+// Optionally, filter results by tag group or search.
+//
+// FRED tags are attributes assigned to series.
+// For this request, related FRED tags are the tags assigned to series that match all tags in the tag_names parameter, no tags in the exclude_tag_names parameter, and the release set by the release_id parameter.
+// See the related request GetReleaseTags.
+//
+// Series are assigned tags and releases.
+// Indirectly through series, it is possible to get the tags for a release.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_related_tags.html
 func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*FredType, error) {
 
 	fc, err := f.operate(params, releaseRelatedTags)
@@ -170,13 +164,13 @@ func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*Fred
 
 }
 
-/********************************
- ** GetReleaseTables
- **
- ** Get the related tags for a
- ** category.
- ********************************/
-
+// GetReleaseTables will get release table trees for a given release.
+// You can go directly to the tree structure by passing the appropriate ElementId.
+// You may also use a drill-down approach to start at the root (top most) element by leaving the element_id off.
+//
+// Note that release dates are published by data sources and do not necessarily represent when data will be available on the FRED or ALFRED websites.
+//
+// Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_tables.html
 func (f *FredClient) GetReleaseTables(params map[string]interface{}) (string, error) {
 	if err := f.validateAPIKEY(); err != nil {
 
