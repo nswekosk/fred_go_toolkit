@@ -4,7 +4,6 @@ import (
 	"os"
 	"testing"
 
-	. "github.com/nswekosk/fred_client/assets"
 	. "github.com/nswekosk/fred_client/lib"
 	. "github.com/smartystreets/goconvey/convey"
 )

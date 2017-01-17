@@ -3,8 +3,6 @@ package lib
 import (
 	"errors"
 	"io/ioutil"
-
-	. "github.com/nswekosk/fred_client/assets"
 )
 
 // Release is a single instance of a release of FRED economic data.
@@ -29,10 +27,10 @@ type ReleaseDate struct {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/releases.html
 func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleasesParam)
+	fc, err := f.operate(params, releasesParam)
 
 	if err != nil {
-		f.logError(ReleasesParam, err)
+		f.logError(releasesParam, err)
 		return nil, err
 	}
 
@@ -46,10 +44,10 @@ func (f *FredClient) GetReleases(params map[string]interface{}) (*FredType, erro
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/releases_dates.html
 func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseDatesParam)
+	fc, err := f.operate(params, releaseDatesParam)
 
 	if err != nil {
-		f.logError(ReleaseDatesParam, err)
+		f.logError(releaseDatesParam, err)
 		return nil, err
 	}
 
@@ -62,10 +60,10 @@ func (f *FredClient) GetReleasesDates(params map[string]interface{}) (*FredType,
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release.html
 func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseParam)
+	fc, err := f.operate(params, releaseParam)
 
 	if err != nil {
-		f.logError(ReleaseParam, err)
+		f.logError(releaseParam, err)
 		return nil, err
 	}
 
@@ -79,10 +77,10 @@ func (f *FredClient) GetRelease(params map[string]interface{}) (*FredType, error
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_dates.html
 func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseDatesParam)
+	fc, err := f.operate(params, releaseDatesParam)
 
 	if err != nil {
-		f.logError(ReleaseDatesParam, err)
+		f.logError(releaseDatesParam, err)
 		return nil, err
 	}
 
@@ -95,10 +93,10 @@ func (f *FredClient) GetReleaseDates(params map[string]interface{}) (*FredType, 
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_series.html
 func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseSeriesParam)
+	fc, err := f.operate(params, releaseSeriesParam)
 
 	if err != nil {
-		f.logError(ReleaseSeriesParam, err)
+		f.logError(releaseSeriesParam, err)
 		return nil, err
 	}
 
@@ -111,10 +109,10 @@ func (f *FredClient) GetReleaseSeries(params map[string]interface{}) (*FredType,
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_sources.html
 func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseSourcesParam)
+	fc, err := f.operate(params, releaseSourcesParam)
 
 	if err != nil {
-		f.logError(ReleaseSourcesParam, err)
+		f.logError(releaseSourcesParam, err)
 		return nil, err
 	}
 
@@ -131,10 +129,10 @@ func (f *FredClient) GetReleaseSources(params map[string]interface{}) (*FredType
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_tags.html
 func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseTagsParam)
+	fc, err := f.operate(params, releaseTagsParam)
 
 	if err != nil {
-		f.logError(ReleaseTagsParam, err)
+		f.logError(releaseTagsParam, err)
 		return nil, err
 	}
 
@@ -155,10 +153,10 @@ func (f *FredClient) GetReleaseTags(params map[string]interface{}) (*FredType, e
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/release_related_tags.html
 func (f *FredClient) GetReleaseRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, ReleaseRelatedTagsParam)
+	fc, err := f.operate(params, releaseRelatedTagsParam)
 
 	if err != nil {
-		f.logError(ReleaseRelatedTagsParam, err)
+		f.logError(releaseRelatedTagsParam, err)
 		return nil, err
 	}
 
@@ -189,7 +187,7 @@ func (f *FredClient) GetReleaseTables(params map[string]interface{}) (string, er
 	res, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		f.log("[GetReleaseTables] READ ERROR: " + err.Error())
-		return "", errors.New(ErrorLibraryFail)
+		return "", errors.New(errorLibraryFail)
 	}
 
 	return string(res), nil

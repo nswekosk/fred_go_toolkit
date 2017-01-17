@@ -1,9 +1,5 @@
 package lib
 
-import (
-	. "github.com/nswekosk/fred_client/assets"
-)
-
 // Tag is a single instance of a FRED tag.
 type Tag struct {
 	Name        string `json:"name" xml:"name,attr"`
@@ -22,10 +18,10 @@ type Tag struct {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/tags.html
 func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, TagsParam)
+	fc, err := f.operate(params, tagsParam)
 
 	if err != nil {
-		f.logError(TagsParam, err)
+		f.logError(tagsParam, err)
 		return nil, err
 	}
 
@@ -43,10 +39,10 @@ func (f *FredClient) GetTags(params map[string]interface{}) (*FredType, error) {
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/related_tags.html
 func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, RelatedTagsParam)
+	fc, err := f.operate(params, relatedTagsParam)
 
 	if err != nil {
-		f.logError(RelatedTagsParam, err)
+		f.logError(relatedTagsParam, err)
 		return nil, err
 	}
 
@@ -59,10 +55,10 @@ func (f *FredClient) GetRelatedTags(params map[string]interface{}) (*FredType, e
 // Schema for the request and response objects and source for the documentation can be found at the following link: https://research.stlouisfed.org/docs/api/fred/tags_series.html
 func (f *FredClient) GetTagSeries(params map[string]interface{}) (*FredType, error) {
 
-	fc, err := f.operate(params, TagsSeriesParam)
+	fc, err := f.operate(params, tagsSeriesParam)
 
 	if err != nil {
-		f.logError(TagsSeriesParam, err)
+		f.logError(tagsSeriesParam, err)
 		return nil, err
 	}
 
