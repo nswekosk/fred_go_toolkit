@@ -1,4 +1,4 @@
-package fred_client
+package fred_go_toolkit
 
 // Series is a single instance of a FRED series.
 type Series struct {

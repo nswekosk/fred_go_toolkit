@@ -1,4 +1,4 @@
-package fred_client
+package fred_go_toolkit
 
 // Tag is a single instance of a FRED tag.
 type Tag struct {

@@ -1,4 +1,4 @@
-package fred_client
+package fred_go_toolkit
 
 // Source is a single instance of a FRED Source.
 type Source struct {

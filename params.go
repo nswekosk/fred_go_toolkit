@@ -1,4 +1,4 @@
-package fred_client
+package fred_go_toolkit
 
 var paramsLookup = map[string]map[string]interface{}{
 
