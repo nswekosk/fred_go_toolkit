@@ -1,4 +1,4 @@
-package fred_client
+package fred_go_toolkit
 
 // Categories represents a collection of FRED categories.
 type Categories struct {
