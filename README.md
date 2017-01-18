@@ -9,7 +9,7 @@ This is a GoLang toolkit for working with the Federal Reserve Economic Data. FRE
 
 ## Installation
 
-   Setup/confirm setup for Go environment.
+   Setup Go environment.
    Run 'go get github.com/nswekosk/fred_go_toolkit'
 
 ## Get a FRED API key
