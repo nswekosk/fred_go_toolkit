@@ -5,7 +5,7 @@ FRED GoLang Toolkit for Federal Reserve Economic Data
 
 [![GoDoc](https://godoc.org/github.com/nswekosk/fred_go_toolkit?status.svg)](https://godoc.org/github.com/nswekosk/fred_go_toolkit)
 
-This is a GoLang client for retrieving the Federal Reserve Economic Data. FRED contains frequently updated US macro and regional economic time series at annual, quarterly, monthly, weekly, and daily frequencies. FRED aggregates economic data from a variety of sources - most of which are US government agencies. The economic time series in FRED contains observation or measurement periods associated with data values. For instance, the US unemployment rate for the month of January, 1990 was 5.4 percent and for the month of January, 2000 was 4.0 percent.
+This is a GoLang toolkit for working with the Federal Reserve Economic Data. FRED contains frequently updated US macro and regional economic time series at annual, quarterly, monthly, weekly, and daily frequencies. FRED aggregates economic data from a variety of sources - most of which are US government agencies. The economic time series in FRED contains observation or measurement periods associated with data values. For instance, the US unemployment rate for the month of January, 1990 was 5.4 percent and for the month of January, 2000 was 4.0 percent.
 
 ## Installation
 
